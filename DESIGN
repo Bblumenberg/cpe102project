@@ -1,0 +1,143 @@
+class: Point
+methods:
+	adjacent
+
+class: Background
+methods:
+	get_images
+	get_images
+	get_name
+	next_image
+
+class: MinerNotFull
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_rate
+	set_resource_count
+	get_resource_count
+	get_resource_limit
+	get_name
+	get_animation_rate
+	remove_pending_action
+	add_pending_action
+	get_pending-actions
+	clear_pending_actions
+	next_image
+	entity_string
+	miner_to_ore
+
+class: MinerFull:
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_rate
+	set_resource_count
+	get_resource_count
+	get_resource_limit
+	get_name
+	get_animation_rate
+	remove_pending_action
+	add_pending_action
+	get_pending-actions
+	clear_pending_actions
+	next_image
+	miner_to_smith
+
+class: Vein
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_rate
+	get_resource_distance
+	get_name
+	remove_pending_action
+	add_pending_action
+	get_pending-actions
+	clear_pending_actions
+	next_image
+	entity_string
+
+class: Ore
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_rate
+	get_name
+	remove_pending_action
+	add_pending_action
+	get_pending-actions
+	clear_pending_actions
+	next_image
+	entity_string
+
+class: Blacksmith:
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_rate
+	set_resource_count
+	get_resource_count
+	get_resource_limit
+	get_resource_distance
+	get_name
+	remove_pending_action
+	add_pending_action
+	get_pending-actions
+	clear_pending_actions
+	next_image
+	entity_string
+
+class: Obstacle
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_name
+	next_image
+	entity_string
+
+class OreBlob:
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_rate
+	get_name
+	get_animation_rate
+	remove_pending_action
+	add_pending_action
+	get_pending-actions
+	clear_pending_actions
+	next_image
+
+class: Quake
+methods:
+	set_position
+	get_position
+	get_images
+	get_images
+	get_name
+	get_animation_rate
+	remove_pending_action
+	add_pending_action
+	get_pending-actions
+	clear_pending_actions
+	next_image
+
+Standalone Functions:
+	The following are left alone as they do not interact directly with an object:
+		next_position
+	

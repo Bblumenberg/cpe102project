@@ -6,11 +6,142 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		B5B89DEF1AD3AAAA004BB646 /* actions.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = actions.py; sourceTree = "<group>"; };
+		B5B89DF11AD3AAAA004BB646 /* builder_controller.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = builder_controller.py; sourceTree = "<group>"; };
+		B5B89DF21AD3AAAA004BB646 /* builder.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = builder.py; sourceTree = "<group>"; };
+		B5B89DF31AD3AAAA004BB646 /* controller.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = controller.py; sourceTree = "<group>"; };
+		B5B89DF51AD3AAAA004BB646 /* DESIGN */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESIGN; sourceTree = "<group>"; };
+		B5B89DF61AD3AAAA004BB646 /* entities.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = entities.py; sourceTree = "<group>"; };
+		B5B89DF81AD3AAAA004BB646 /* gaia.sav */ = {isa = PBXFileReference; lastKnownFileType = text; path = gaia.sav; sourceTree = "<group>"; };
+		B5B89DF91AD3AAAA004BB646 /* image_store.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = image_store.py; sourceTree = "<group>"; };
+		B5B89DFB1AD3AAAA004BB646 /* imagelist */ = {isa = PBXFileReference; lastKnownFileType = text; path = imagelist; sourceTree = "<group>"; };
+		B5B89DFD1AD3AAAA004BB646 /* blacksmith.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blacksmith.bmp; sourceTree = "<group>"; };
+		B5B89DFE1AD3AAAA004BB646 /* blob1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob1.bmp; sourceTree = "<group>"; };
+		B5B89DFF1AD3AAAA004BB646 /* blob10.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob10.bmp; sourceTree = "<group>"; };
+		B5B89E001AD3AAAA004BB646 /* blob11.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob11.bmp; sourceTree = "<group>"; };
+		B5B89E011AD3AAAA004BB646 /* blob12.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob12.bmp; sourceTree = "<group>"; };
+		B5B89E021AD3AAAA004BB646 /* blob2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob2.bmp; sourceTree = "<group>"; };
+		B5B89E031AD3AAAA004BB646 /* blob3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob3.bmp; sourceTree = "<group>"; };
+		B5B89E041AD3AAAA004BB646 /* blob4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob4.bmp; sourceTree = "<group>"; };
+		B5B89E051AD3AAAA004BB646 /* blob5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob5.bmp; sourceTree = "<group>"; };
+		B5B89E061AD3AAAA004BB646 /* blob6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob6.bmp; sourceTree = "<group>"; };
+		B5B89E071AD3AAAA004BB646 /* blob7.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob7.bmp; sourceTree = "<group>"; };
+		B5B89E081AD3AAAA004BB646 /* blob8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob8.bmp; sourceTree = "<group>"; };
+		B5B89E091AD3AAAA004BB646 /* blob9.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob9.bmp; sourceTree = "<group>"; };
+		B5B89E0A1AD3AAAA004BB646 /* freeze1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze1.bmp; sourceTree = "<group>"; };
+		B5B89E0B1AD3AAAA004BB646 /* freeze2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze2.bmp; sourceTree = "<group>"; };
+		B5B89E0C1AD3AAAA004BB646 /* freeze3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze3.bmp; sourceTree = "<group>"; };
+		B5B89E0D1AD3AAAA004BB646 /* freeze4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze4.bmp; sourceTree = "<group>"; };
+		B5B89E0E1AD3AAAA004BB646 /* grass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grass.bmp; sourceTree = "<group>"; };
+		B5B89E0F1AD3AAAA004BB646 /* miner1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner1.bmp; sourceTree = "<group>"; };
+		B5B89E101AD3AAAA004BB646 /* miner2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner2.bmp; sourceTree = "<group>"; };
+		B5B89E111AD3AAAA004BB646 /* miner3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner3.bmp; sourceTree = "<group>"; };
+		B5B89E121AD3AAAA004BB646 /* miner4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner4.bmp; sourceTree = "<group>"; };
+		B5B89E131AD3AAAA004BB646 /* miner5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner5.bmp; sourceTree = "<group>"; };
+		B5B89E141AD3AAAA004BB646 /* none.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = none.bmp; sourceTree = "<group>"; };
+		B5B89E151AD3AAAA004BB646 /* obstacle.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = obstacle.bmp; sourceTree = "<group>"; };
+		B5B89E161AD3AAAA004BB646 /* ore.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ore.bmp; sourceTree = "<group>"; };
+		B5B89E171AD3AAAA004BB646 /* quake1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake1.bmp; sourceTree = "<group>"; };
+		B5B89E181AD3AAAA004BB646 /* quake2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake2.bmp; sourceTree = "<group>"; };
+		B5B89E191AD3AAAA004BB646 /* quake3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake3.bmp; sourceTree = "<group>"; };
+		B5B89E1A1AD3AAAA004BB646 /* quake4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake4.bmp; sourceTree = "<group>"; };
+		B5B89E1B1AD3AAAA004BB646 /* quake5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake5.bmp; sourceTree = "<group>"; };
+		B5B89E1C1AD3AAAA004BB646 /* quake6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake6.bmp; sourceTree = "<group>"; };
+		B5B89E1D1AD3AAAA004BB646 /* rock.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = rock.bmp; sourceTree = "<group>"; };
+		B5B89E1E1AD3AAAA004BB646 /* vein.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = vein.bmp; sourceTree = "<group>"; };
+		B5B89E1F1AD3AAAA004BB646 /* wyvern1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern1.bmp; sourceTree = "<group>"; };
+		B5B89E201AD3AAAA004BB646 /* wyvern2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern2.bmp; sourceTree = "<group>"; };
+		B5B89E211AD3AAAA004BB646 /* wyvern3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern3.bmp; sourceTree = "<group>"; };
+		B5B89E221AD3AAAA004BB646 /* wyvern4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern4.bmp; sourceTree = "<group>"; };
+		B5B89E231AD3AAAA004BB646 /* wyvern5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern5.bmp; sourceTree = "<group>"; };
+		B5B89E241AD3AAAA004BB646 /* wyvern6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern6.bmp; sourceTree = "<group>"; };
+		B5B89E251AD3AAAA004BB646 /* wyvern7.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern7.bmp; sourceTree = "<group>"; };
+		B5B89E261AD3AAAA004BB646 /* wyvern8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern8.bmp; sourceTree = "<group>"; };
+		B5B89E271AD3AAAA004BB646 /* keys.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = keys.py; sourceTree = "<group>"; };
+		B5B89E281AD3AAAA004BB646 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
+		B5B89E291AD3AAAA004BB646 /* mouse_buttons.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = mouse_buttons.py; sourceTree = "<group>"; };
+		B5B89E2A1AD3AAAA004BB646 /* occ_grid.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = occ_grid.py; sourceTree = "<group>"; };
+		B5B89E2C1AD3AAAA004BB646 /* ordered_list.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ordered_list.py; sourceTree = "<group>"; };
+		B5B89E2E1AD3AAAA004BB646 /* point.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = point.py; sourceTree = "<group>"; };
+		B5B89E301AD3AAAA004BB646 /* save_load.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = save_load.py; sourceTree = "<group>"; };
+		B5B89E321AD3AAAA004BB646 /* worldmodel.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = worldmodel.py; sourceTree = "<group>"; };
+		B5B89E341AD3AAAA004BB646 /* worldview.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = worldview.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		B5B89DE81AD3AA88004BB646 = {
 			isa = PBXGroup;
 			children = (
+				B5B89DEF1AD3AAAA004BB646 /* actions.py */,
+				B5B89DF11AD3AAAA004BB646 /* builder_controller.py */,
+				B5B89DF21AD3AAAA004BB646 /* builder.py */,
+				B5B89DF31AD3AAAA004BB646 /* controller.py */,
+				B5B89DF51AD3AAAA004BB646 /* DESIGN */,
+				B5B89DF61AD3AAAA004BB646 /* entities.py */,
+				B5B89DF81AD3AAAA004BB646 /* gaia.sav */,
+				B5B89DF91AD3AAAA004BB646 /* image_store.py */,
+				B5B89DFB1AD3AAAA004BB646 /* imagelist */,
+				B5B89DFC1AD3AAAA004BB646 /* images */,
+				B5B89E271AD3AAAA004BB646 /* keys.py */,
+				B5B89E281AD3AAAA004BB646 /* main.py */,
+				B5B89E291AD3AAAA004BB646 /* mouse_buttons.py */,
+				B5B89E2A1AD3AAAA004BB646 /* occ_grid.py */,
+				B5B89E2C1AD3AAAA004BB646 /* ordered_list.py */,
+				B5B89E2E1AD3AAAA004BB646 /* point.py */,
+				B5B89E301AD3AAAA004BB646 /* save_load.py */,
+				B5B89E321AD3AAAA004BB646 /* worldmodel.py */,
+				B5B89E341AD3AAAA004BB646 /* worldview.py */,
 			);
+			sourceTree = "<group>";
+		};
+		B5B89DFC1AD3AAAA004BB646 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B5B89DFD1AD3AAAA004BB646 /* blacksmith.bmp */,
+				B5B89DFE1AD3AAAA004BB646 /* blob1.bmp */,
+				B5B89DFF1AD3AAAA004BB646 /* blob10.bmp */,
+				B5B89E001AD3AAAA004BB646 /* blob11.bmp */,
+				B5B89E011AD3AAAA004BB646 /* blob12.bmp */,
+				B5B89E021AD3AAAA004BB646 /* blob2.bmp */,
+				B5B89E031AD3AAAA004BB646 /* blob3.bmp */,
+				B5B89E041AD3AAAA004BB646 /* blob4.bmp */,
+				B5B89E051AD3AAAA004BB646 /* blob5.bmp */,
+				B5B89E061AD3AAAA004BB646 /* blob6.bmp */,
+				B5B89E071AD3AAAA004BB646 /* blob7.bmp */,
+				B5B89E081AD3AAAA004BB646 /* blob8.bmp */,
+				B5B89E091AD3AAAA004BB646 /* blob9.bmp */,
+				B5B89E0A1AD3AAAA004BB646 /* freeze1.bmp */,
+				B5B89E0B1AD3AAAA004BB646 /* freeze2.bmp */,
+				B5B89E0C1AD3AAAA004BB646 /* freeze3.bmp */,
+				B5B89E0D1AD3AAAA004BB646 /* freeze4.bmp */,
+				B5B89E0E1AD3AAAA004BB646 /* grass.bmp */,
+				B5B89E0F1AD3AAAA004BB646 /* miner1.bmp */,
+				B5B89E101AD3AAAA004BB646 /* miner2.bmp */,
+				B5B89E111AD3AAAA004BB646 /* miner3.bmp */,
+				B5B89E121AD3AAAA004BB646 /* miner4.bmp */,
+				B5B89E131AD3AAAA004BB646 /* miner5.bmp */,
+				B5B89E141AD3AAAA004BB646 /* none.bmp */,
+				B5B89E151AD3AAAA004BB646 /* obstacle.bmp */,
+				B5B89E161AD3AAAA004BB646 /* ore.bmp */,
+				B5B89E171AD3AAAA004BB646 /* quake1.bmp */,
+				B5B89E181AD3AAAA004BB646 /* quake2.bmp */,
+				B5B89E191AD3AAAA004BB646 /* quake3.bmp */,
+				B5B89E1A1AD3AAAA004BB646 /* quake4.bmp */,
+				B5B89E1B1AD3AAAA004BB646 /* quake5.bmp */,
+				B5B89E1C1AD3AAAA004BB646 /* quake6.bmp */,
+				B5B89E1D1AD3AAAA004BB646 /* rock.bmp */,
+				B5B89E1E1AD3AAAA004BB646 /* vein.bmp */,
+				B5B89E1F1AD3AAAA004BB646 /* wyvern1.bmp */,
+				B5B89E201AD3AAAA004BB646 /* wyvern2.bmp */,
+				B5B89E211AD3AAAA004BB646 /* wyvern3.bmp */,
+				B5B89E221AD3AAAA004BB646 /* wyvern4.bmp */,
+				B5B89E231AD3AAAA004BB646 /* wyvern5.bmp */,
+				B5B89E241AD3AAAA004BB646 /* wyvern6.bmp */,
+				B5B89E251AD3AAAA004BB646 /* wyvern7.bmp */,
+				B5B89E261AD3AAAA004BB646 /* wyvern8.bmp */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
