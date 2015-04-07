@@ -148,6 +148,8 @@ methods:
 	get_pending-actions
 	clear_pending_actions
 	next_image
+   create_entity_death_action
+   schedule_quake
 
 Standalone Functions:
 	The following are left alone as they do not interact directly with an object:

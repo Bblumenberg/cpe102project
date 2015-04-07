@@ -427,6 +427,40 @@ class Quake:
       self.pending_actions = []
    def next_image(self):
       self.current_img = (self.current_img + 1) % len(self.imgs)
+   def create_entity_death_action(self, world):
+      def action(current_ticks):
+         self.remove_pending_action(action)
+         actions.remove_entity(world, self)
+         return [self.position]
+      return action
+   def schedule_quake(self, world, ticks):
+      actions.schedule_animation(world, self, actions.QUAKE_STEPS)
+      actions.schedule_action(world, self, self.create_entity_death_action(world), ticks + actions.QUAKE_DURATION)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # This is a less than pleasant file format, but structured based on
