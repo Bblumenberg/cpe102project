@@ -255,6 +255,16 @@ class Ore:
    def entity_string(self):
       return ' '.join(['ore', self.name, str(self.position.x),
          str(self.position.y), str(self.rate)])
+   def create_ore_transform_action(self, world, i_store):
+      def action(current_ticks):
+         self.remove_pending_action(action)
+         blob = actions.create_blob(world, self.name + " -- blob", self.position, self.rate // actions.BLOB_RATE_SCALE, current_ticks, i_store)
+         actions.remove_entity(world, self)
+         worldmodel.add_entity(world, blob)
+         return [blob.get_position()]
+      return action
+   def schedule_ore(self, world, ticks, i_store):
+      actions.schedule_action(world, self, self.create_ore_transform_action(world, i_store), ticks + self.rate)
 
 class Blacksmith:
    def __init__(self, name, position, imgs, resource_limit, rate,

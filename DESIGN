@@ -86,6 +86,8 @@ methods:
 	clear_pending_actions
 	next_image
 	entity_string
+   create_ore_transform_action
+   schedule_ore
 
 class: Blacksmith:
 methods:
@@ -155,6 +157,11 @@ Standalone Functions:
 	The following are left alone as they do not interact directly with an object:
 		sign
 		next_position
-	The following are more of helper functions than methods of any one (or even a few) object(s)
-		schedule_action 
+   The following are more of helper functions than methods of any one (or even a few) object(s):
+		schedule_action
+		schedule_animation
+		remove_entity
+		clear_pending_actions
+      create_animation_action
 	try_transform_miner is a check function rather than an action taken by either type of miner
+   the create_ functions were left in actions; it dones't make sense for an object to create itself

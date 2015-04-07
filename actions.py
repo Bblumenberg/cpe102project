@@ -72,21 +72,6 @@ def create_animation_action(world, entity, repeat_count):
    return action
 
 
-def create_ore_transform_action(world, entity, i_store):
-   def action(current_ticks):
-      entity.remove_pending_action(action)
-      blob = create_blob(world, entity.get_name() + " -- blob",
-         entity.get_position(),
-         entity.get_rate() // BLOB_RATE_SCALE,
-         current_ticks, i_store)
-
-      remove_entity(world, entity)
-      worldmodel.add_entity(world, blob)
-
-      return [blob.get_position()]
-   return action
-
-
 def remove_entity(world, entity):
    for action in entity.get_pending_actions():
       worldmodel.unschedule_action(world, action)
@@ -106,15 +91,9 @@ def create_blob(world, name, pt, rate, ticks, i_store):
 def create_ore(world, name, pt, ticks, i_store):
    ore = entities.Ore(name, pt, image_store.get_images(i_store, 'ore'),
       random.randint(ORE_CORRUPT_MIN, ORE_CORRUPT_MAX))
-   schedule_ore(world, ore, ticks, i_store)
+   ore.schedule_ore(world, ticks, i_store)
 
    return ore
-
-
-def schedule_ore(world, ore, ticks, i_store):
-   schedule_action(world, ore,
-      create_ore_transform_action(world, ore, i_store),
-      ticks + ore.get_rate())
 
 
 def create_quake(world, pt, ticks, i_store):
