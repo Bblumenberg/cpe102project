@@ -46,40 +46,6 @@ def next_position(world, entity_pt, dest_pt):
    return new_pt
 
 
-def find_open_around(world, pt, distance):
-   for dy in range(-distance, distance + 1):
-      for dx in range(-distance, distance + 1):
-         new_pt = point.Point(pt.x + dx, pt.y + dy)
-
-         if (worldmodel.within_bounds(world, new_pt) and
-            (not worldmodel.is_occupied(world, new_pt))):
-            return new_pt
-
-   return None
-
-
-def create_vein_action(world, entity, i_store):
-   def action(current_ticks):
-      entity.remove_pending_action(action)
-
-      open_pt = find_open_around(world, entity.get_position(),
-         entity.get_resource_distance())
-      if open_pt:
-         ore = create_ore(world,
-            "ore - " + entity.get_name() + " - " + str(current_ticks),
-            open_pt, current_ticks, i_store)
-         worldmodel.add_entity(world, ore)
-         tiles = [open_pt]
-      else:
-         tiles = []
-
-      schedule_action(world, entity,
-         create_vein_action(world, entity, i_store),
-         current_ticks + entity.get_rate())
-      return tiles
-   return action
-
-
 def try_transform_miner(world, entity, transform):
    new_entity = transform(world)
    if entity != new_entity:
@@ -146,12 +112,6 @@ def create_blob(world, name, pt, rate, ticks, i_store):
    return blob
 
 
-def schedule_miner(world, miner, ticks, i_store):
-   schedule_action(world, miner, miner.create_miner_action(world, i_store),
-      ticks + miner.get_rate())
-   schedule_animation(world, miner)
-
-
 def create_ore(world, name, pt, ticks, i_store):
    ore = entities.Ore(name, pt, image_store.get_images(i_store, 'ore'),
       random.randint(ORE_CORRUPT_MIN, ORE_CORRUPT_MAX))
@@ -184,11 +144,6 @@ def create_vein(world, name, pt, ticks, i_store):
       random.randint(VEIN_RATE_MIN, VEIN_RATE_MAX),
       pt, image_store.get_images(i_store, 'vein'))
    return vein
-
-
-def schedule_vein(world, vein, ticks, i_store):
-   schedule_action(world, vein, create_vein_action(world, vein, i_store),
-      ticks + vein.get_rate())
 
 
 def schedule_action(world, entity, action, time):

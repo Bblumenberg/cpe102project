@@ -90,6 +90,9 @@ class MinerNotFull:
       else:
          new_entity = MinerFull(self.name, self.resource_limit, self.position, self.rate, self.imgs, self.animation_rate)
          return new_entity
+   def schedule_miner(self, world, ticks, i_store):
+      actions.schedule_action(world, self, self.create_miner_action(world, i_store), ticks + self.rate)
+      actions.schedule_animation(world, self)
 
 class MinerFull:
    def __init__(self, name, resource_limit, position, rate, imgs,
@@ -196,6 +199,28 @@ class Vein:
       return ' '.join(['vein', self.name, str(self.position.x),
          str(self.position.y), str(self.rate),
          str(self.resource_distance)])
+   def find_open_around(self, world, pt, distance):
+      for dy in range(-distance, distance + 1):
+         for dx in range(-distance, distance + 1):
+            new_pt = point.Point(pt.x + dx, pt.y + dy)
+            if (worldmodel.within_bounds(world, new_pt) and (not worldmodel.is_occupied(world, new_pt))):
+               return new_pt
+      return None
+   def create_action(self, world, i_store):
+      def action(current_ticks):
+         self.remove_pending_action(action)
+         open_pt = self.find_open_around(world, self.position, self.resource_distance)
+         if open_pt:
+            ore = actions.create_ore(world, "ore - " + self.name + " - " + str(current_ticks), open_pt, current_ticks, i_store)
+            worldmodel.add_entity(world, ore)
+            tiles = [open_pt]
+         else:
+            tiles = []
+         actions.schedule_action(world, self, self.create_action(world, i_store), current_ticks + self.rate)
+         return tiles
+      return action
+   def schedule_vein(self, world, ticks, i_store):
+      actions.schedule_action(world, self, self.create_action(world, i_store), ticks + self.rate)
 
 class Ore:
    def __init__(self, name, position, imgs, rate=5000):

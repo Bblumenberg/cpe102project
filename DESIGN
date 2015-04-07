@@ -30,6 +30,7 @@ methods:
 	miner_to_ore
 	create_miner_action
 	try_transform_miner_not_full
+   schedule_miner
 
 class: MinerFull:
 methods:
@@ -67,6 +68,9 @@ methods:
 	clear_pending_actions
 	next_image
 	entity_string
+   find_open_around
+   create_action
+   schedule_vein
 
 class: Ore
 methods:
