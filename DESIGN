@@ -28,6 +28,8 @@ methods:
 	next_image
 	entity_string
 	miner_to_ore
+	create_miner_action
+	try_transform_miner_not_full
 
 class: MinerFull:
 methods:
@@ -47,6 +49,8 @@ methods:
 	clear_pending_actions
 	next_image
 	miner_to_smith
+	create_miner_action
+	try_transform_miner_full
 
 class: Vein
 methods:
@@ -139,5 +143,8 @@ methods:
 
 Standalone Functions:
 	The following are left alone as they do not interact directly with an object:
+		sign
 		next_position
-	
+	The following are more of helper functions than methods of any one (or even a few) object(s)
+		schedule_action 
+	try_transform_miner is a check function rather than an action taken by either type of miner

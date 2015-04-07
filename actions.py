@@ -63,46 +63,6 @@ def blob_next_position(world, entity_pt, dest_pt):
    return new_pt
 
 
-def create_miner_not_full_action(world, entity, i_store):
-   def action(current_ticks):
-      entity.remove_pending_action(action)
-
-      entity_pt = entity.get_position()
-      ore = worldmodel.find_nearest(world, entity_pt, entities.Ore)
-      (tiles, found) = entity.miner_to_ore(world, ore)
-
-      new_entity = entity
-      if found:
-         new_entity = try_transform_miner(world, entity,
-            try_transform_miner_not_full)
-
-      schedule_action(world, new_entity,
-         create_miner_action(world, new_entity, i_store),
-         current_ticks + new_entity.get_rate())
-      return tiles
-   return action
-
-
-def create_miner_full_action(world, entity, i_store):
-   def action(current_ticks):
-      entity.remove_pending_action(action)
-
-      entity_pt = entity.get_position()
-      smith = worldmodel.find_nearest(world, entity_pt, entities.Blacksmith)
-      (tiles, found) = entity.miner_to_smith(world, smith)
-
-      new_entity = entity
-      if found:
-         new_entity = try_transform_miner(world, entity,
-            try_transform_miner_full)
-
-      schedule_action(world, new_entity,
-         create_miner_action(world, new_entity, i_store),
-         current_ticks + new_entity.get_rate())
-      return tiles
-   return action
-
-
 def blob_to_vein(world, entity, vein):
    entity_pt = entity.get_position()
    if not vein:
@@ -175,27 +135,8 @@ def create_vein_action(world, entity, i_store):
    return action
 
 
-def try_transform_miner_full(world, entity):
-   new_entity = entities.MinerNotFull(
-      entity.get_name(), entity.get_resource_limit(),
-      entity.get_position(), entity.get_rate(),
-      entity.get_images(), entity.get_animation_rate())
-   return new_entity
-
-
-def try_transform_miner_not_full(world, entity):
-   if entity.resource_count < entity.resource_limit:
-      return entity
-   else:
-      new_entity = entities.MinerFull(
-         entity.get_name(), entity.get_resource_limit(),
-         entity.get_position(), entity.get_rate(),
-         entity.get_images(), entity.get_animation_rate())
-      return new_entity
-
-
 def try_transform_miner(world, entity, transform):
-   new_entity = transform(world, entity)
+   new_entity = transform(world)
    if entity != new_entity:
       clear_pending_actions(world, entity)
       worldmodel.remove_entity_at(world, entity.get_position())
@@ -203,13 +144,6 @@ def try_transform_miner(world, entity, transform):
       schedule_animation(world, new_entity)
 
    return new_entity
-
-
-def create_miner_action(world, entity, image_store):
-   if isinstance(entity, entities.MinerNotFull):
-      return create_miner_not_full_action(world, entity, image_store)
-   else:
-      return create_miner_full_action(world, entity, image_store)
 
 
 def create_animation_action(world, entity, repeat_count):
@@ -274,7 +208,7 @@ def schedule_blob(world, blob, ticks, i_store):
 
 
 def schedule_miner(world, miner, ticks, i_store):
-   schedule_action(world, miner, create_miner_action(world, miner, i_store),
+   schedule_action(world, miner, miner.create_miner_action(world, i_store),
       ticks + miner.get_rate())
    schedule_animation(world, miner)
 
