@@ -126,6 +126,10 @@ methods:
 	get_pending-actions
 	clear_pending_actions
 	next_image
+   blob_next_position
+   blob_to_vein
+   create_action
+   schedule_blob
 
 class: Quake
 methods:

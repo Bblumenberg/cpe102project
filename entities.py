@@ -62,7 +62,6 @@ class MinerNotFull:
       return ' '.join(['miner', self.name, str(self.position.x),
          str(self.position.y), str(self.resource_limit),
          str(self.rate), str(self.animation_rate)])
-
    def miner_to_ore(self, world, ore):
       if not ore:
          return ([self.position], False)
@@ -74,7 +73,6 @@ class MinerNotFull:
       else:
          new_pt = actions.next_position(world, self.position, ore_pt)
          return (worldmodel.move_entity(world, self, new_pt), False)
-
    def create_miner_action(self, world, i_store):
       def action(current_ticks):
          self.remove_pending_action(action)
@@ -86,7 +84,6 @@ class MinerNotFull:
          actions.schedule_action(world, new_entity, new_entity.create_miner_action(world, i_store), current_ticks + new_entity.get_rate())
          return tiles
       return action
-
    def try_transform_miner_not_full(self, world):
       if self.resource_count < self. resource_limit:
          return self
@@ -147,7 +144,6 @@ class MinerFull:
       else:
          new_pt = actions.next_position(world, self.position, smith_pt)
          return (worldmodel.move_entity(world, self, new_pt), False)
-
    def create_miner_action(self, world, i_store):
       def action(current_ticks):
          self.remove_pending_action(action)
@@ -159,12 +155,9 @@ class MinerFull:
          actions.schedule_action(world, new_entity, new_entity.create_miner_action(world, i_store), current_ticks + new_entity.get_rate())
          return tiles
       return action
-
    def try_transform_miner_full(self, world):
       new_entity = MinerNotFull(self.name, self.resource_limit, self.position, self.rate, self.imgs, self.animation_rate)
       return new_entity
-
-
 
 class Vein:
    def __init__(self, name, rate, position, imgs, resource_distance=1):
@@ -340,6 +333,44 @@ class OreBlob:
       self.pending_actions = []
    def next_image(self):
       self.current_img = (self.current_img + 1) % len(self.imgs)
+   def blob_next_position(self, world, dest_pt):
+      horiz = actions.sign(dest_pt.x - self.position.x)
+      new_pt = point.Point(self.position.x + horiz, self.position.y)
+      if horiz == 0 or (worldmodel.is_occupied(world, new_pt) and not isinstance(worldmodel.get_tile_occupant(world, new_pt), Ore)):
+         vert = actions.sign(dest_pt.y - self.position.y)
+         new_pt = point.Point(self.position.x, self.position.y + vert)
+         if vert == 0 or (worldmodel.is_occupied(world, new_pt) and not isinstance(worldmodel.get_tile_occupant(world, new_pt), Ore)):
+            new_pt = self.position
+      return new_pt
+   def blob_to_vein(self, world, vein):
+      if not vein:
+         return ([self.position], False)
+      vein_pt = vein.get_position()
+      if self.position.adjacent(vein_pt):
+         actions.remove_entity(world, vein)
+         return ([vein_pt], True)
+      else:
+         new_pt = self.blob_next_position(world, vein_pt)
+         old_entity = worldmodel.get_tile_occupant(world, new_pt)
+         if isinstance(old_entity, Ore):
+            actions.remove_entity(world, old_entity)
+         return (worldmodel.move_entity(world, self, new_pt), False)
+   def create_action(self, world, i_store):
+      def action(current_ticks):
+         self.remove_pending_action(action)
+         vein = worldmodel.find_nearest(world, self.position, Vein)
+         (tiles, found) = self.blob_to_vein(world, vein)
+         next_time = current_ticks + self.rate
+         if found:
+            quake = actions.create_quake(world, tiles[0], current_ticks, i_store)
+            worldmodel.add_entity(world, quake)
+            next_time = current_ticks + self.rate * 2
+         actions.schedule_action(world, self, self.create_action(world, i_store), next_time)
+         return tiles
+      return action
+   def schedule_blob(self, world, ticks, i_store):
+      actions.schedule_action(world, self, self.create_action(world, i_store), ticks + self.rate)
+      actions.schedule_animation(world, self)
 
 class Quake:
    def __init__(self, name, position, imgs, animation_rate):

@@ -46,61 +46,6 @@ def next_position(world, entity_pt, dest_pt):
    return new_pt
 
 
-def blob_next_position(world, entity_pt, dest_pt):
-   horiz = sign(dest_pt.x - entity_pt.x)
-   new_pt = point.Point(entity_pt.x + horiz, entity_pt.y)
-
-   if horiz == 0 or (worldmodel.is_occupied(world, new_pt) and
-      not isinstance(worldmodel.get_tile_occupant(world, new_pt),
-      entities.Ore)):
-      vert = sign(dest_pt.y - entity_pt.y)
-      new_pt = point.Point(entity_pt.x, entity_pt.y + vert)
-
-      if vert == 0 or (worldmodel.is_occupied(world, new_pt) and
-         not isinstance(worldmodel.get_tile_occupant(world, new_pt),
-         entities.Ore)):
-         new_pt = point.Point(entity_pt.x, entity_pt.y)
-   return new_pt
-
-
-def blob_to_vein(world, entity, vein):
-   entity_pt = entity.get_position()
-   if not vein:
-      return ([entity_pt], False)
-   vein_pt = vein.get_position()
-   if entity_pt.adjacent(vein_pt):
-      remove_entity(world, vein)
-      return ([vein_pt], True)
-   else:
-      new_pt = blob_next_position(world, entity_pt, vein_pt)
-      old_entity = worldmodel.get_tile_occupant(world, new_pt)
-      if isinstance(old_entity, entities.Ore):
-         remove_entity(world, old_entity)
-      return (worldmodel.move_entity(world, entity, new_pt), False)
-
-
-def create_ore_blob_action(world, entity, i_store):
-   def action(current_ticks):
-      entity.remove_pending_action(action)
-
-      entity_pt = entity.get_position()
-      vein = worldmodel.find_nearest(world, entity_pt, entities.Vein)
-      (tiles, found) = blob_to_vein(world, entity, vein)
-
-      next_time = current_ticks + entity.get_rate()
-      if found:
-         quake = create_quake(world, tiles[0], current_ticks, i_store)
-         worldmodel.add_entity(world, quake)
-         next_time = current_ticks + entity.get_rate() * 2
-
-      schedule_action(world, entity,
-         create_ore_blob_action(world, entity, i_store),
-         next_time)
-
-      return tiles
-   return action
-
-
 def find_open_around(world, pt, distance):
    for dy in range(-distance, distance + 1):
       for dx in range(-distance, distance + 1):
@@ -197,14 +142,8 @@ def create_blob(world, name, pt, rate, ticks, i_store):
       image_store.get_images(i_store, 'blob'),
       random.randint(BLOB_ANIMATION_MIN, BLOB_ANIMATION_MAX)
       * BLOB_ANIMATION_RATE_SCALE)
-   schedule_blob(world, blob, ticks, i_store)
+   blob.schedule_blob(world, ticks, i_store)
    return blob
-
-
-def schedule_blob(world, blob, ticks, i_store):
-   schedule_action(world, blob, create_ore_blob_action(world, blob, i_store),
-      ticks + blob.get_rate())
-   schedule_animation(world, blob)
 
 
 def schedule_miner(world, miner, ticks, i_store):
