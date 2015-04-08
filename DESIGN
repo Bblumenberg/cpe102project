@@ -1,6 +1,25 @@
 class: Point
 methods:
 	adjacent
+   distance_sq
+
+class: WorldModel
+methods:
+   within_bounds
+   is_occupied
+   find_nearest
+   add_entity
+   move_entity
+   remove_entity
+   remove_entity_at
+   schedule_action
+   unschedule_action
+   update_on_time
+   get_background_image
+   get_background
+   set_background
+   get_tile_occupant
+   get_entities
 
 class: Background
 methods:
@@ -157,6 +176,7 @@ Standalone Functions:
 	The following are left alone as they do not interact directly with an object:
 		sign
 		next_position
+      nearest_entity
    The following are more of helper functions than methods of any one (or even a few) object(s):
 		schedule_action
 		schedule_animation

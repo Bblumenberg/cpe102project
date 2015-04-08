@@ -72,11 +72,11 @@ class MinerNotFull:
          return ([ore_pt], True)
       else:
          new_pt = actions.next_position(world, self.position, ore_pt)
-         return (worldmodel.move_entity(world, self, new_pt), False)
+         return (world.move_entity(self, new_pt), False)
    def create_miner_action(self, world, i_store):
       def action(current_ticks):
          self.remove_pending_action(action)
-         ore = worldmodel.find_nearest(world, self.position, Ore)
+         ore = world.find_nearest(self.position, Ore)
          (tiles, found) = self.miner_to_ore(world, ore)
          new_entity = self
          if found:
@@ -146,11 +146,11 @@ class MinerFull:
          return ([], True)
       else:
          new_pt = actions.next_position(world, self.position, smith_pt)
-         return (worldmodel.move_entity(world, self, new_pt), False)
+         return (world.move_entity(self, new_pt), False)
    def create_miner_action(self, world, i_store):
       def action(current_ticks):
          self.remove_pending_action(action)
-         smith = worldmodel.find_nearest(world, self.position, Blacksmith)
+         smith = world.find_nearest(self.position, Blacksmith)
          (tiles, found) = self.miner_to_smith(world, smith)
          new_entity = self
          if found:
@@ -203,7 +203,7 @@ class Vein:
       for dy in range(-distance, distance + 1):
          for dx in range(-distance, distance + 1):
             new_pt = point.Point(pt.x + dx, pt.y + dy)
-            if (worldmodel.within_bounds(world, new_pt) and (not worldmodel.is_occupied(world, new_pt))):
+            if (world.within_bounds(new_pt) and (not world.is_occupied(new_pt))):
                return new_pt
       return None
    def create_action(self, world, i_store):
@@ -212,7 +212,7 @@ class Vein:
          open_pt = self.find_open_around(world, self.position, self.resource_distance)
          if open_pt:
             ore = actions.create_ore(world, "ore - " + self.name + " - " + str(current_ticks), open_pt, current_ticks, i_store)
-            worldmodel.add_entity(world, ore)
+            world.add_entity(ore)
             tiles = [open_pt]
          else:
             tiles = []
@@ -260,7 +260,7 @@ class Ore:
          self.remove_pending_action(action)
          blob = actions.create_blob(world, self.name + " -- blob", self.position, self.rate // actions.BLOB_RATE_SCALE, current_ticks, i_store)
          actions.remove_entity(world, self)
-         worldmodel.add_entity(world, blob)
+         world.add_entity(blob)
          return [blob.get_position()]
       return action
    def schedule_ore(self, world, ticks, i_store):
@@ -371,10 +371,10 @@ class OreBlob:
    def blob_next_position(self, world, dest_pt):
       horiz = actions.sign(dest_pt.x - self.position.x)
       new_pt = point.Point(self.position.x + horiz, self.position.y)
-      if horiz == 0 or (worldmodel.is_occupied(world, new_pt) and not isinstance(worldmodel.get_tile_occupant(world, new_pt), Ore)):
+      if horiz == 0 or (world.is_occupied(new_pt) and not isinstance(world.get_tile_occupant(new_pt), Ore)):
          vert = actions.sign(dest_pt.y - self.position.y)
          new_pt = point.Point(self.position.x, self.position.y + vert)
-         if vert == 0 or (worldmodel.is_occupied(world, new_pt) and not isinstance(worldmodel.get_tile_occupant(world, new_pt), Ore)):
+         if vert == 0 or (world.is_occupied(new_pt) and not isinstance(world.get_tile_occupant(new_pt), Ore)):
             new_pt = self.position
       return new_pt
    def blob_to_vein(self, world, vein):
@@ -386,19 +386,19 @@ class OreBlob:
          return ([vein_pt], True)
       else:
          new_pt = self.blob_next_position(world, vein_pt)
-         old_entity = worldmodel.get_tile_occupant(world, new_pt)
+         old_entity = world.get_tile_occupant(new_pt)
          if isinstance(old_entity, Ore):
             actions.remove_entity(world, old_entity)
-         return (worldmodel.move_entity(world, self, new_pt), False)
+         return (world.move_entity(self, new_pt), False)
    def create_action(self, world, i_store):
       def action(current_ticks):
          self.remove_pending_action(action)
-         vein = worldmodel.find_nearest(world, self.position, Vein)
+         vein = world.find_nearest(self.position, Vein)
          (tiles, found) = self.blob_to_vein(world, vein)
          next_time = current_ticks + self.rate
          if found:
             quake = actions.create_quake(world, tiles[0], current_ticks, i_store)
-            worldmodel.add_entity(world, quake)
+            world.add_entity(quake)
             next_time = current_ticks + self.rate * 2
          actions.schedule_action(world, self, self.create_action(world, i_store), next_time)
          return tiles

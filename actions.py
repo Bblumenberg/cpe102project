@@ -36,11 +36,11 @@ def next_position(world, entity_pt, dest_pt):
    horiz = sign(dest_pt.x - entity_pt.x)
    new_pt = point.Point(entity_pt.x + horiz, entity_pt.y)
 
-   if horiz == 0 or worldmodel.is_occupied(world, new_pt):
+   if horiz == 0 or world.is_occupied(new_pt):
       vert = sign(dest_pt.y - entity_pt.y)
       new_pt = point.Point(entity_pt.x, entity_pt.y + vert)
 
-      if vert == 0 or worldmodel.is_occupied(world, new_pt):
+      if vert == 0 or world.is_occupied(new_pt):
          new_pt = point.Point(entity_pt.x, entity_pt.y)
 
    return new_pt
@@ -50,8 +50,8 @@ def try_transform_miner(world, entity, transform):
    new_entity = transform(world)
    if entity != new_entity:
       clear_pending_actions(world, entity)
-      worldmodel.remove_entity_at(world, entity.get_position())
-      worldmodel.add_entity(world, new_entity)
+      world.remove_entity_at(entity.get_position())
+      world.add_entity(new_entity)
       schedule_animation(world, new_entity)
 
    return new_entity
@@ -74,9 +74,9 @@ def create_animation_action(world, entity, repeat_count):
 
 def remove_entity(world, entity):
    for action in entity.get_pending_actions():
-      worldmodel.unschedule_action(world, action)
+      world.unschedule_action(action)
    entity.clear_pending_actions()
-   worldmodel.remove_entity(world, entity)
+   world.remove_entity(entity)
 
 
 def create_blob(world, name, pt, rate, ticks, i_store):
@@ -112,7 +112,7 @@ def create_vein(world, name, pt, ticks, i_store):
 
 def schedule_action(world, entity, action, time):
    entity.add_pending_action(action)
-   worldmodel.schedule_action(world, action, time)
+   world.schedule_action(action, time)
 
 
 def schedule_animation(world, entity, repeat_count=0):
@@ -123,5 +123,5 @@ def schedule_animation(world, entity, repeat_count=0):
 
 def clear_pending_actions(world, entity):
    for action in entity.get_pending_actions():
-      worldmodel.unschedule_action(world, action)
+      world.unschedule_action(action)
    entity.clear_pending_actions()
