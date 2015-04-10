@@ -1,3 +1,4 @@
+
 import pygame
 
 DEFAULT_IMAGE_NAME = 'background_default'

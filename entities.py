@@ -90,7 +90,7 @@ class MinerNotFull:
       else:
          new_entity = MinerFull(self.name, self.resource_limit, self.position, self.rate, self.imgs, self.animation_rate)
          return new_entity
-   def schedule_miner(self, world, ticks, i_store):
+   def schedule_any(self, world, ticks, i_store):
       actions.schedule_action(world, self, self.create_miner_action(world, i_store), ticks + self.rate)
       actions.schedule_animation(world, self)
 
@@ -219,7 +219,7 @@ class Vein:
          actions.schedule_action(world, self, self.create_action(world, i_store), current_ticks + self.rate)
          return tiles
       return action
-   def schedule_vein(self, world, ticks, i_store):
+   def schedule_any(self, world, ticks, i_store):
       actions.schedule_action(world, self, self.create_action(world, i_store), ticks + self.rate)
 
 class Ore:
@@ -263,7 +263,7 @@ class Ore:
          world.add_entity(blob)
          return [blob.get_position()]
       return action
-   def schedule_ore(self, world, ticks, i_store):
+   def schedule_any(self, world, ticks, i_store):
       actions.schedule_action(world, self, self.create_ore_transform_action(world, i_store), ticks + self.rate)
 
 class Blacksmith:
@@ -446,31 +446,6 @@ class Quake:
    def schedule_quake(self, world, ticks):
       actions.schedule_animation(world, self, actions.QUAKE_STEPS)
       actions.schedule_action(world, self, self.create_entity_death_action(world), ticks + actions.QUAKE_DURATION)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # This is a less than pleasant file format, but structured based on

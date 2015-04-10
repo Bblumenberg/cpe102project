@@ -65,7 +65,7 @@ def save_background(world, file):
    for row in range(0, world.num_rows):
       for col in range(0, world.num_cols):
          file.write('background ' +
-            worl.get_background(point.Point(col,row)).get_name() +
+            world.get_background(point.Point(col,row)).get_name() +
             ' ' + str(col) + ' ' + str(row) + '\n')
 
 
@@ -167,9 +167,5 @@ def create_obstacle(properties, i_store):
 
 
 def schedule_entity(world, entity, i_store):
-   if isinstance(entity, entities.MinerNotFull):
-      entity.schedule_miner(world, 0, i_store)
-   elif isinstance(entity, entities.Vein):
-      entity.schedule_vein(world, 0, i_store)
-   elif isinstance(entity, entities.Ore):
-      entity.schedule_ore(world, 0, i_store)
+   if isinstance(entity, entities.MinerNotFull) or isinstance(entity, entities.Vein) or isinstance(entity, entities.Ore):
+      entity.schedule_any(world, 0, i_store)

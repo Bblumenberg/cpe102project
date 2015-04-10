@@ -91,7 +91,7 @@ def create_blob(world, name, pt, rate, ticks, i_store):
 def create_ore(world, name, pt, ticks, i_store):
    ore = entities.Ore(name, pt, image_store.get_images(i_store, 'ore'),
       random.randint(ORE_CORRUPT_MIN, ORE_CORRUPT_MAX))
-   ore.schedule_ore(world, ticks, i_store)
+   ore.schedule_any(world, ticks, i_store)
 
    return ore
 
