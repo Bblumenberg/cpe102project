@@ -15,6 +15,22 @@ methods:
 	head
 	pop
 
+class: WorldView
+methods:
+   viewport_to_world
+   world_to_viewport
+   create_shifted_viewport
+   draw_background
+   draw_entities
+   draw_viewport
+   update_view
+   update_view_tiles
+   update_tile
+   get_tile_image
+   create_mouse_surface
+   update_mouse_cursor
+   mouse_move
+
 class: WorldModel
 methods:
    within_bounds
@@ -192,15 +208,16 @@ Standalone Functions:
 		process_image_line
 		get_images_internal
 		get_images
-   The following are more of helper functions than methods of any one (or even a few) object(s):
-	schedule_action
-	schedule_animation
-	remove_entity
-	clear_pending_actions
-	create_animation_action
-	load_images
-	create_default_image
-	all functions in save_load
+		clamp
+	The following are more of helper functions than methods of any one (or even a few) object(s):
+		schedule_action
+		schedule_animation
+		remove_entity
+		clear_pending_actions
+		create_animation_action
+		load_images
+		create_default_image
+		all functions in save_load
 try_transform_miner is a check function rather than an action taken by either type of miner
 the create_ functions were left in actions; it doesn't make sense for an object to create itself
 all the builder/main functions were left alone; one is a creator like mentioned above, the other is pygame setup stuff
