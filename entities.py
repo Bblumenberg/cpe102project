@@ -16,16 +16,14 @@ class Background:
    def next_image(self):
       self.current_img = (self.current_img + 1) % len(self.imgs)
 
-class MinerNotFull:
-   def __init__(self, name, resource_limit, position, rate, imgs,
-      animation_rate):
+class Miner:
+   def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
       self.name = name
       self.position = position
       self.rate = rate
       self.imgs = imgs
       self.current_img = 0
       self.resource_limit = resource_limit
-      self.resource_count = 0
       self.animation_rate = animation_rate
       self.pending_actions = []
    def set_position(self, point):
@@ -58,10 +56,12 @@ class MinerNotFull:
       self.pending_actions = []
    def next_image(self):
       self.current_img = (self.current_img + 1) % len(self.imgs)
-   def entity_string(self):
-      return ' '.join(['miner', self.name, str(self.position.x),
-         str(self.position.y), str(self.resource_limit),
-         str(self.rate), str(self.animation_rate)])
+
+
+class MinerNotFull(Miner):
+   def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
+      Miner.__init__(self, name, resource_limit, position, rate, imgs, animation_rate)
+      self.resource_count = 0
    def miner_to_ore(self, world, ore):
       if not ore:
          return ([self.position], False)
@@ -93,49 +93,15 @@ class MinerNotFull:
    def schedule_any(self, world, ticks, i_store):
       actions.schedule_action(world, self, self.create_miner_action(world, i_store), ticks + self.rate)
       actions.schedule_animation(world, self)
+   def entity_string(self):
+      return ' '.join(['miner', self.name, str(self.position.x),
+                       str(self.position.y), str(self.resource_limit),
+                       str(self.rate), str(self.animation_rate)])
 
-class MinerFull:
-   def __init__(self, name, resource_limit, position, rate, imgs,
-      animation_rate):
-      self.name = name
-      self.position = position
-      self.rate = rate
-      self.imgs = imgs
-      self.current_img = 0
-      self.resource_limit = resource_limit
+class MinerFull(Miner):
+   def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
+      Miner.__init__(self, name, resource_limit, position, rate, imgs, animation_rate)
       self.resource_count = resource_limit
-      self.animation_rate = animation_rate
-      self.pending_actions = []
-   def set_position(self, point):
-      self.position = point
-   def get_position(self):
-      return self.position
-   def get_images(self):
-      return self.imgs
-   def get_image(self):
-      return self.imgs[self.current_img]
-   def get_rate(self):
-      return self.rate
-   def set_resource_count(self, n):
-      self.resource_count = n
-   def get_resource_count(self):
-      return self.resource_count
-   def get_resource_limit(self):
-      return self.resource_limit
-   def get_name(self):
-      return self.name
-   def get_animation_rate(self):
-      return self.animation_rate
-   def remove_pending_action(self, action):
-      self.pending_actions.remove(action)
-   def add_pending_action(self, action):
-      self.pending_actions.append(action)
-   def get_pending_actions(self):
-      return self.pending_actions
-   def clear_pending_actions(self):
-      self.pending_actions = []
-   def next_image(self):
-      self.current_img = (self.current_img + 1) % len(self.imgs)
    def miner_to_smith(self, world, smith):
       if not smith:
          return ([self.position], False)
