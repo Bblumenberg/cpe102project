@@ -34,8 +34,9 @@ class Obstacle(PositionedEntity):
                        str(self.position.y)])
 
 class ActionedEntity(PositionedEntity):#Parent
-   def __init__(self, name, imgs, position):
+   def __init__(self, name, imgs, position, rate):
       PositionedEntity.__init__(self, name, imgs, position)
+      self.rate = rate
       self.pending_actions = []
    def remove_pending_action(self, action):
       self.pending_actions.remove(action)
@@ -45,14 +46,13 @@ class ActionedEntity(PositionedEntity):#Parent
       return self.pending_actions
    def clear_pending_actions(self):
       self.pending_actions = []
+   def get_rate(self):
+      return self.rate
 
 class Vein(ActionedEntity):
    def __init__(self, name, rate, position, imgs, resource_distance=1):
-      ActionedEntity.__init__(self, name, imgs, position)
-      self.rate = rate
+      ActionedEntity.__init__(self, name, imgs, position, rate)
       self.resource_distance = resource_distance
-   def get_rate(self):
-      return self.rate
    def get_resource_distance(self):
       return self.resource_distance
    def entity_string(self):
@@ -84,10 +84,7 @@ class Vein(ActionedEntity):
 
 class Ore(ActionedEntity):
    def __init__(self, name, position, imgs, rate=5000):
-      ActionedEntity.__init__(self, name, imgs, position)
-      self.rate = rate
-   def get_rate(self):
-      return self.rate
+      ActionedEntity.__init__(self, name, imgs, position, rate)
    def entity_string(self):
       return ' '.join(['ore', self.name, str(self.position.x),
          str(self.position.y), str(self.rate)])
@@ -104,11 +101,8 @@ class Ore(ActionedEntity):
 
 class OreBlob(ActionedEntity):
    def __init__(self, name, position, rate, imgs, animation_rate):
-      ActionedEntity.__init__(self, name, imgs, position)
-      self.rate = rate
+      ActionedEntity.__init__(self, name, imgs, position, rate)
       self.animation_rate = animation_rate
-   def get_rate(self):
-      return self.rate
    def get_animation_rate(self):
       return self.animation_rate
    def blob_next_position(self, world, dest_pt):
@@ -152,7 +146,7 @@ class OreBlob(ActionedEntity):
 
 class Quake(ActionedEntity):
    def __init__(self, name, position, imgs, animation_rate):
-      ActionedEntity.__init__(self, name, imgs, position)
+      ActionedEntity.__init__(self, name, imgs, position, None)
       self.animation_rate = animation_rate
    def get_animation_rate(self):
       return self.animation_rate
@@ -169,13 +163,10 @@ class Quake(ActionedEntity):
 class Blacksmith(ActionedEntity):
    def __init__(self, name, position, imgs, resource_limit, rate,
                 resource_distance=1):
-      ActionedEntity.__init__(self, name, imgs, position)
+      ActionedEntity.__init__(self, name, imgs, position, rate)
       self.resource_limit = resource_limit
       self.resource_count = 0
-      self.rate = rate
       self.resource_distance = resource_distance
-   def get_rate(self):
-      return self.rate
    def set_resource_count(self, n):
       self.resource_count = n
    def get_resource_count(self):
@@ -191,12 +182,9 @@ class Blacksmith(ActionedEntity):
 
 class Miner(ActionedEntity):
    def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
-      ActionedEntity.__init__(self, name, imgs, position)
-      self.rate = rate
+      ActionedEntity.__init__(self, name, imgs, position, rate)
       self.resource_limit = resource_limit
       self.animation_rate = animation_rate
-   def get_rate(self):
-      return self.rate
    def set_resource_count(self, n):
       self.resource_count = n
    def get_resource_count(self):
