@@ -159,9 +159,7 @@ def create_blacksmith(properties, i_store):
 
 def create_obstacle(properties, i_store):
    if len(properties) == OBSTACLE_NUM_PROPERTIES:
-      return entities.Obstacle(properties[OBSTACLE_NAME],
-         point.Point(int(properties[OBSTACLE_COL]), int(properties[OBSTACLE_ROW])),
-         image_store.get_images(i_store, properties[PROPERTY_KEY]))
+      return entities.Obstacle(properties[OBSTACLE_NAME], image_store.get_images(i_store, properties[PROPERTY_KEY]), point.Point(int(properties[OBSTACLE_COL]), int(properties[OBSTACLE_ROW])))
    else:
       return None
 

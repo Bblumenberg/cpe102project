@@ -76,7 +76,7 @@ def create_new_entity(pt, entity_select, i_store):
    name = entity_select + '_' + str(pt.x) + '_' + str(pt.y)
    images = image_store.get_images(i_store, entity_select)
    if entity_select == 'obstacle':
-      return entities.Obstacle(name, pt, images)
+      return entities.Obstacle(name, images, pt)
    elif entity_select == 'miner':
       return entities.MinerNotFull(name, MINER_LIMIT, pt,
          random.randint(MINER_RATE_MIN, MINER_RATE_MAX),

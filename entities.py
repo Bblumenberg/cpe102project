@@ -2,7 +2,7 @@ import point
 import actions
 import worldmodel
 
-class Entity:
+class Entity:#Parent
    def __init__(self, name, imgs):
       self.name = name
       self.imgs = imgs
@@ -19,7 +19,7 @@ class Entity:
 class Background(Entity):
    pass
 
-class PositionedEntity(Entity):
+class PositionedEntity(Entity):#Parent
    def __init__(self, name, imgs, position):
       Entity.__init__(self, name, imgs)
       self.position = position
@@ -29,13 +29,11 @@ class PositionedEntity(Entity):
       return self.position
 
 class Obstacle(PositionedEntity):
-   def __init__(self, name, position, imgs):
-      PositionedEntity.__init__(self, name, imgs, position)
    def entity_string(self):
       return ' '.join(['obstacle', self.name, str(self.position.x),
                        str(self.position.y)])
 
-class ActionedEntity(PositionedEntity):
+class ActionedEntity(PositionedEntity):#Parent
    def __init__(self, name, imgs, position):
       PositionedEntity.__init__(self, name, imgs, position)
       self.pending_actions = []
@@ -104,29 +102,6 @@ class Ore(ActionedEntity):
    def schedule_any(self, world, ticks, i_store):
       actions.schedule_action(world, self, self.create_ore_transform_action(world, i_store), ticks + self.rate)
 
-class Blacksmith(ActionedEntity):
-   def __init__(self, name, position, imgs, resource_limit, rate,
-      resource_distance=1):
-      ActionedEntity.__init__(self, name, imgs, position)
-      self.resource_limit = resource_limit
-      self.resource_count = 0
-      self.rate = rate
-      self.resource_distance = resource_distance
-   def get_rate(self):
-      return self.rate
-   def set_resource_count(self, n):
-      self.resource_count = n
-   def get_resource_count(self):
-      return self.resource_count
-   def get_resource_limit(self):
-      return self.resource_limit
-   def get_resource_distance(self):
-      return self.resource_distance
-   def entity_string(self):
-      return ' '.join(['blacksmith', self.name, str(self.position.x),
-         str(self.position.y), str(self.resource_limit),
-         str(self.rate), str(self.resource_distance)])
-
 class OreBlob(ActionedEntity):
    def __init__(self, name, position, rate, imgs, animation_rate):
       ActionedEntity.__init__(self, name, imgs, position)
@@ -191,6 +166,28 @@ class Quake(ActionedEntity):
       actions.schedule_animation(world, self, actions.QUAKE_STEPS)
       actions.schedule_action(world, self, self.create_entity_death_action(world), ticks + actions.QUAKE_DURATION)
 
+class Blacksmith(ActionedEntity):
+   def __init__(self, name, position, imgs, resource_limit, rate,
+                resource_distance=1):
+      ActionedEntity.__init__(self, name, imgs, position)
+      self.resource_limit = resource_limit
+      self.resource_count = 0
+      self.rate = rate
+      self.resource_distance = resource_distance
+   def get_rate(self):
+      return self.rate
+   def set_resource_count(self, n):
+      self.resource_count = n
+   def get_resource_count(self):
+      return self.resource_count
+   def get_resource_limit(self):
+      return self.resource_limit
+   def get_resource_distance(self):
+      return self.resource_distance
+   def entity_string(self):
+      return ' '.join(['blacksmith', self.name, str(self.position.x),
+                       str(self.position.y), str(self.resource_limit),
+                       str(self.rate), str(self.resource_distance)])
 
 class Miner(ActionedEntity):
    def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
