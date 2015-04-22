@@ -160,19 +160,23 @@ class Quake(ActionedEntity):
       actions.schedule_animation(world, self, actions.QUAKE_STEPS)
       actions.schedule_action(world, self, self.create_entity_death_action(world), ticks + actions.QUAKE_DURATION)
 
-class Blacksmith(ActionedEntity):
-   def __init__(self, name, position, imgs, resource_limit, rate,
-                resource_distance=1):
+class ResourceEntity(ActionedEntity):#Parent
+   def __init__(self, name, imgs, position, rate, resource_limit, resource_count):
       ActionedEntity.__init__(self, name, imgs, position, rate)
       self.resource_limit = resource_limit
-      self.resource_count = 0
-      self.resource_distance = resource_distance
+      self.resource_count = resource_count
    def set_resource_count(self, n):
       self.resource_count = n
    def get_resource_count(self):
       return self.resource_count
    def get_resource_limit(self):
       return self.resource_limit
+
+class Blacksmith(ResourceEntity):
+   def __init__(self, name, position, imgs, resource_limit, rate,
+                resource_distance=1):
+      ResourceEntity.__init__(self, name, imgs, position, rate, resource_limit, 0)
+      self.resource_distance = resource_distance
    def get_resource_distance(self):
       return self.resource_distance
    def entity_string(self):
@@ -180,24 +184,16 @@ class Blacksmith(ActionedEntity):
                        str(self.position.y), str(self.resource_limit),
                        str(self.rate), str(self.resource_distance)])
 
-class Miner(ActionedEntity):
-   def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
-      ActionedEntity.__init__(self, name, imgs, position, rate)
-      self.resource_limit = resource_limit
+class Miner(ResourceEntity):
+   def __init__(self, name, resource_limit, position, rate, imgs, animation_rate, resource_count):
+      ResourceEntity.__init__(self, name, imgs, position, rate, resource_limit, resource_count)
       self.animation_rate = animation_rate
-   def set_resource_count(self, n):
-      self.resource_count = n
-   def get_resource_count(self):
-      return self.resource_count
-   def get_resource_limit(self):
-      return self.resource_limit
    def get_animation_rate(self):
       return self.animation_rate
 
 class MinerNotFull(Miner):
    def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
-      Miner.__init__(self, name, resource_limit, position, rate, imgs, animation_rate)
-      self.resource_count = 0
+      Miner.__init__(self, name, resource_limit, position, rate, imgs, animation_rate, 0)
    def miner_to_ore(self, world, ore):
       if not ore:
          return ([self.position], False)
@@ -236,7 +232,7 @@ class MinerNotFull(Miner):
 
 class MinerFull(Miner):
    def __init__(self, name, resource_limit, position, rate, imgs, animation_rate):
-      Miner.__init__(self, name, resource_limit, position, rate, imgs, animation_rate)
+      Miner.__init__(self, name, resource_limit, position, rate, imgs, animation_rate, resource_limit)
       self.resource_count = resource_limit
    def miner_to_smith(self, world, smith):
       if not smith:
