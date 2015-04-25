@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		B5887BF01AEB5BAB00867E49 /* Entity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Entity.java; sourceTree = "<group>"; };
+		B5887BF11AEB62F900867E49 /* Point.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Point.java; sourceTree = "<group>"; };
+		B5887BF31AEB670400867E49 /* TestCases.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = TestCases.java; sourceTree = "<group>"; };
+		B5887BF41AEB6D6600867E49 /* Background.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Background.java; sourceTree = "<group>"; };
+		B5887BF51AEB6D9000867E49 /* PositionedEntity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = PositionedEntity.java; sourceTree = "<group>"; };
+		B5887BF61AEB6DB400867E49 /* Obstacle.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Obstacle.java; sourceTree = "<group>"; };
 		B5B89DEF1AD3AAAA004BB646 /* actions.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = actions.py; sourceTree = "<group>"; tabWidth = 3; };
 		B5B89DF11AD3AAAA004BB646 /* builder_controller.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = builder_controller.py; sourceTree = "<group>"; tabWidth = 3; };
 		B5B89DF21AD3AAAA004BB646 /* builder.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = builder.py; sourceTree = "<group>"; tabWidth = 3; };
@@ -74,6 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				B5B89DEF1AD3AAAA004BB646 /* actions.py */,
+				B5887BF01AEB5BAB00867E49 /* Entity.java */,
+				B5887BF41AEB6D6600867E49 /* Background.java */,
+				B5887BF51AEB6D9000867E49 /* PositionedEntity.java */,
+				B5887BF61AEB6DB400867E49 /* Obstacle.java */,
+				B5887BF11AEB62F900867E49 /* Point.java */,
+				B5887BF31AEB670400867E49 /* TestCases.java */,
 				B5B89DF11AD3AAAA004BB646 /* builder_controller.py */,
 				B5B89DF21AD3AAAA004BB646 /* builder.py */,
 				B5B89DF31AD3AAAA004BB646 /* controller.py */,

@@ -23,12 +23,13 @@ class PositionedEntity(Entity):#Parent
    def __init__(self, name, imgs, position, type):
       Entity.__init__(self, name, imgs)
       self.position = position
+      self.type = type
    def set_position(self, point):
       self.position = point
    def get_position(self):
       return self.position
    def entity_string(self):
-      return ' '.join([str(type), self.name, str(self.position.x), str(self.position.y)])
+      return ' '.join([str(self.type), self.name, str(self.position.x), str(self.position.y)])
 
 
 class Obstacle(PositionedEntity):
