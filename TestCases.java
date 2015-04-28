@@ -38,13 +38,28 @@ public class TestCases
     @Test
     public void TestObstaclePosition(){
         obs.set_position(position2);
-        assertTrue(obs.get_position().get_x() == 1.0 && obs.get_position().get_y() == 0.0);
+        assertTrue(obs.get_position().get_x() == 1 && obs.get_position().get_y() == 0);
     }
     
     @Test
     public void TestObstacleString(){
-        assertTrue(obs.entity_string().equals("obstacle obs 0.0 0.0"));
+        assertTrue(obs.entity_string().equals("obstacle obs 0 0"));
         //Interesting that changing the position above didn't affect this...
         //Due to UnitTest or this being a different mehtod?
+    }
+
+    private OccGrid mygrid = new OccGrid(2,2);
+    
+    @Test
+    public void TestOccGrid(){
+        mygrid.set_cell(position1, obs);
+        assertTrue(mygrid.get_cell(position1) == obs);
+        assertTrue(mygrid.get_cell(position2) == null);
+    }
+    
+    @Test
+    public void TestOccGridReset(){
+        mygrid.set_cell(position1, null);
+        assertTrue(mygrid.get_cell(position1) == null);
     }
 }
