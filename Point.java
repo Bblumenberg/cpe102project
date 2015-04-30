@@ -9,21 +9,21 @@ public class Point{
         this.y = y;
     }
     
-    public int get_x(){
+    public int getX(){
         return this.x;
     }
     
-    public int get_y(){
+    public int getY(){
         return this.y;
     }
     
     public boolean adjacent(Point that){
-        return ((this.get_x() == that.get_x() && Math.abs(this.get_y() - that.get_y()) == 1) || (this.get_y() == that.get_y() && Math.abs(this.get_x() - that.get_x()) == 1));
+        return ((this.getX() == that.getX() && Math.abs(this.getY() - that.getY()) == 1) || (this.getY() == that.getY() && Math.abs(this.getX() - that.getX()) == 1));
     }
     
-    public int distance_sq(Point that){
-        int xdiff = this.get_x() - that.get_x();
-        int ydiff = this.get_y() - that.get_y();
+    public int distanceSq(Point that){
+        int xdiff = this.getX() - that.getX();
+        int ydiff = this.getY() - that.getY();
         return (xdiff*xdiff) + (ydiff*ydiff);
     }
 }

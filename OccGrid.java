@@ -7,18 +7,18 @@ public class OccGrid{
         this.width = width;
         this.height = height;
         this.grid  = new Entity[height][width];
-        for(int y = 0 : y <= height : y++){
-            for(int x = 0 : x <= width : x++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
                 this.grid[y][x] = value;
             }
         }
     }
     
-    public void set_cell(Point pt, Entity value){
-        this.grid[pt.get_y()][pt.get_x()] = value;
+    public void setCell(Point pt, Entity value){
+        this.grid[pt.getY()][pt.getX()] = value;
     }
     
-    public Entity get_cell(Point pt){
-        return this.grid[pt.get_y()][pt.get_x()];
+    public Entity getCell(Point pt){
+        return this.grid[pt.getY()][pt.getX()];
     }
 }

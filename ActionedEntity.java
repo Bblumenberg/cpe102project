@@ -6,7 +6,7 @@ public abstract class ActionedEntity extends PositionedEntity{
         this.rate = rate;
     }
     
-    public double get_rate(){
+    public double getRate(){
         return this.rate;
     }
 }

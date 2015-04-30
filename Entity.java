@@ -5,7 +5,7 @@ public abstract class Entity{
         this.name = name;
     }
     
-    public String get_name(){
+    public String getName(){
         return this.name;
     }
 }

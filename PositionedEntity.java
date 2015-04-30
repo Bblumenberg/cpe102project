@@ -10,15 +10,15 @@ public abstract class PositionedEntity extends Entity{
         this.type = type;
     }
     
-    public void set_position(Point pt){
+    public void setPosition(Point pt){
         this.position = pt;
     }
     
-    public Point get_position(){
+    public Point getPosition(){
         return this.position;
     }
     
-    public String entity_string(){
-        return this.type + " " + this.get_name() + " " + String.valueOf(this.position.get_x()) + " " + String.valueOf(this.position.get_y());
+    public String entityString(){
+        return this.type + " " + this.getName() + " " + String.valueOf(this.position.getX()) + " " + String.valueOf(this.position.getY());
     }
 }
