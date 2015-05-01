@@ -1,58 +1,63 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Comparator;
+
 public class WorldModel{
 
     private int numRows;
     private int numCols;
-    private OccGrid background;
-    private OccGrid occupancy;
-    
-    private List<Entity> entities;
+    private OccGrid<Background> background;
+    private OccGrid<PositionedEntity> occupancy;
+    private List<PositionedEntity> entities;
     public WorldModel(int numRows, int numCols, Background bg){
         this.numRows = numRows;
         this.numCols = numCols;
-        this.entities = new ArrayList<Entity>();
-        this.background = new OccGrid(numCols, numRows, bg);
-        this.occupancy = new OccGrid(numCols, numRows, null);
+        this.entities = new ArrayList<PositionedEntity>();
+        this.background = new OccGrid<Background>(numCols, numRows, bg);
+        this.occupancy = new OccGrid<PositionedEntity>(numCols, numRows, null);
     }
     
     public boolean withinBounds(Point pt){
-        return (pt.getX() >= 0 && pt.getX() < this.numCols && pt.getY() >= 0 && pt.getY < this.numRows);
+        return (pt.getX() >= 0 && pt.getX() < this.numCols && pt.getY() >= 0 && pt.getY() < this.numRows);
     }
     
     public boolean isOccupied(Point pt){
         return (this.withinBounds(pt) && this.occupancy.getCell(pt) != null);
     }
-    
+/*
     public Entity findNearest(Point pt, Class type){
-        private List<Tuple<Entity, int>> oftype = new ArrayLIst<Tuple<Entity, int>>(this.entities.size());
+        List<TwoTuple<PositionedEntity, Integer>> oftype = new ArrayList<TwoTuple<PositionedEntity, Integer>>(this.entities.size());
         int i = 0;
-        for(Entity e : this.entities){
+        for(PositionedEntity e : this.entities){
             if(e.getClass() == type){
-                oftype.add(new Tuple<Entity, int>(e, pt.distanceSq(e.getPosition())));
+                oftype.add(new TwoTuple<PositionedEntity, Integer>(e, pt.distanceSq(e.getPosition())));
             }
         }
-        return this.nearestEntity(oftype)
+        return this.nearestEntity(oftype);
     }
     
-    public Entity nearestEntity(entityDists){
+    public Entity nearestEntity(List<TwoTuple<PositionedEntity, Integer>> entityDists){
         if(entityDists.size() > 0){
-            Tuple pair = entityDists[0];
-            for(Tuple other : entityDists){
-                if(other.R < pair.R){
+            TwoTuple pair = entityDists.get(0);
+            Comparator<Integer> comp = (Integer i1, Integer i2) -> i1-i2;
+            for(TwoTuple other : entityDists){
+                if(comp.compare(other.getR(), pair.getR()) < 0){
                     pair = other;
                 }
             }
-            Entity nearest = pair.L;
+            Entity nearest = pair.getL();
         }
         else{
             Entity nearest = null;
         }
         return nearest;
     }
-    
-    public void addEntity(Entity entity){
+*/
+    public void addEntity(PositionedEntity entity){
         Point pt = entity.getPosition();
         if(this.withinBounds(pt)){
-/*            Entity oldEntity = this.occupancy.getCell(pt);
+/*            PositionedEntity oldEntity = this.occupancy.getCell(pt);
             if(oldEntity != null){
                 oldEntity.clearPendingActions();
             }*/
@@ -61,29 +66,29 @@ public class WorldModel{
         }
     }
     
-    public List<Point> moveEntity(Entity entity, Point pt){
+    public List<Point> moveEntity(PositionedEntity entity, Point pt){
         List<Point> tiles = new LinkedList<Point>();
         if(this.withinBounds(pt)){
             Point oldPt = entity.getPosition();
             this.occupancy.setCell(oldPt, null);
             tiles.add(oldPt);
-            self.occupancy.setCell(pt, entity);
+            this.occupancy.setCell(pt, entity);
             tiles.add(pt);
             entity.setPosition(pt);
         }
         return tiles;
     }
     
-    public void removeEntity(Entity entity){
+    public void removeEntity(PositionedEntity entity){
         this.removeEntityAt(entity.getPosition());
     }
     
     public void removeEntityAt(Point point){
-        if(this.withinBounds(point) && this.occupancy.getCell(pt) != null){
-            Entity entity = self.occupancy.getCell(pt);
+        if(this.withinBounds(point) && this.occupancy.getCell(point) != null){
+            PositionedEntity entity = this.occupancy.getCell(point);
             entity.setPosition(new Point(-1,-1));
             this.entities.remove(entity);
-            this.occupancy.setCell(pt, null);
+            this.occupancy.setCell(point, null);
         }
     }
     
@@ -91,6 +96,7 @@ public class WorldModel{
         if(this.withinBounds(pt)){
             return this.background.getCell(pt);
         }
+        else{return null;}
     }
     
     public void setBackground(Point pt, Background bg){
@@ -99,13 +105,14 @@ public class WorldModel{
         }
     }
     
-    public Entity getTileOccupant(Point pt){
+    public PositionedEntity getTileOccupant(Point pt){
         if(this.withinBounds(pt)){
             return this.occupancy.getCell(pt);
         }
+        else{return null;}
     }
     
-    public List<Entity> getEntities(){
+    public List<PositionedEntity> getEntities(){
         return this.entities;
     }
 }

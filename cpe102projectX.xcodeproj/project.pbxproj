@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		B505CD7D1AEEB3BE0017FE17 /* Tuple.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Tuple.java; sourceTree = "<group>"; };
+		B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = TwoTuple.java; sourceTree = "<group>"; };
 		B5887BF01AEB5BAB00867E49 /* Entity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Entity.java; sourceTree = "<group>"; };
 		B5887BF11AEB62F900867E49 /* Point.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Point.java; sourceTree = "<group>"; };
 		B5887BF31AEB670400867E49 /* TestCases.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = TestCases.java; sourceTree = "<group>"; };
@@ -84,6 +84,7 @@
 		B5B89DE81AD3AA88004BB646 = {
 			isa = PBXGroup;
 			children = (
+				B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */,
 				B5887BF91AEC3E7C00867E49 /* WorldModel.java */,
 				B5887BFA1AEC3F0600867E49 /* OccGrid.java */,
 				B5887BF81AEC3C7A00867E49 /* Vein.java */,
@@ -95,7 +96,6 @@
 				B5887BF11AEB62F900867E49 /* Point.java */,
 				B5887BF71AEC3B1000867E49 /* ActionedEntity.java */,
 				B5887BF31AEB670400867E49 /* TestCases.java */,
-				B505CD7D1AEEB3BE0017FE17 /* Tuple.java */,
 				B5B89DF11AD3AAAA004BB646 /* builder_controller.py */,
 				B5B89DF21AD3AAAA004BB646 /* builder.py */,
 				B5B89DF31AD3AAAA004BB646 /* controller.py */,
