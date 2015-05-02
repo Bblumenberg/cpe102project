@@ -25,7 +25,7 @@ public class WorldModel{
     public boolean isOccupied(Point pt){
         return (this.withinBounds(pt) && this.occupancy.getCell(pt) != null);
     }
-/*
+
     public Entity findNearest(Point pt, Class type){
         List<TwoTuple<PositionedEntity, Integer>> oftype = new ArrayList<TwoTuple<PositionedEntity, Integer>>(this.entities.size());
         int i = 0;
@@ -40,20 +40,21 @@ public class WorldModel{
     public Entity nearestEntity(List<TwoTuple<PositionedEntity, Integer>> entityDists){
         if(entityDists.size() > 0){
             TwoTuple pair = entityDists.get(0);
-            Comparator<Integer> comp = (Integer i1, Integer i2) -> i1-i2;
+            int otherint = other.getR()
+            int pairint = pair.getR()
             for(TwoTuple other : entityDists){
-                if(comp.compare(other.getR(), pair.getR()) < 0){
+                if(otherint - pairint){
                     pair = other;
                 }
             }
-            Entity nearest = pair.getL();
+            PositionedEntity nearest = pair.getL();
         }
         else{
-            Entity nearest = null;
+            PositionedEntity nearest = null;
         }
         return nearest;
     }
-*/
+
     public void addEntity(PositionedEntity entity){
         Point pt = entity.getPosition();
         if(this.withinBounds(pt)){
