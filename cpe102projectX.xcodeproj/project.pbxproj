@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		B5059C211AF808A90043B1B3 /* Miner.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Miner.java; sourceTree = "<group>"; };
+		B5059C221AF80B440043B1B3 /* MinerNotFull.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = MinerNotFull.java; sourceTree = "<group>"; };
+		B5059C231AF811350043B1B3 /* MinerFull.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = MinerFull.java; sourceTree = "<group>"; };
 		B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = TwoTuple.java; sourceTree = "<group>"; };
 		B570770E1AF44EDD00E63066 /* Ore.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Ore.java; sourceTree = "<group>"; };
 		B570770F1AF44FF900E63066 /* OreBlob.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = OreBlob.java; sourceTree = "<group>"; };
@@ -108,10 +111,13 @@
 				B5B89DF31AD3AAAA004BB646 /* controller.py */,
 				B5B89DF51AD3AAAA004BB646 /* DESIGN */,
 				B5B89DF61AD3AAAA004BB646 /* entities.py */,
-				B57077131AF45B2A00E63066 /* Blacksmith.java */,
 				B57077121AF4596C00E63066 /* ResourceEntity.java */,
+				B57077131AF45B2A00E63066 /* Blacksmith.java */,
+				B5059C211AF808A90043B1B3 /* Miner.java */,
+				B5059C221AF80B440043B1B3 /* MinerNotFull.java */,
 				B57077111AF4582000E63066 /* Quake.java */,
 				B570770F1AF44FF900E63066 /* OreBlob.java */,
+				B5059C231AF811350043B1B3 /* MinerFull.java */,
 				B57077101AF452CA00E63066 /* Sign.java */,
 				B5B89DF81AD3AAAA004BB646 /* gaia.sav */,
 				B5B89DF91AD3AAAA004BB646 /* image_store.py */,

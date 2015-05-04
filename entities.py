@@ -219,7 +219,7 @@ class MinerNotFull(Miner):
          return tiles
       return action
    def try_transform_miner_not_full(self, world):
-      if self.resource_count < self. resource_limit:
+      if self.resource_count < self.resource_limit:
          return self
       else:
          new_entity = MinerFull(self.name, self.resource_limit, self.position, self.rate, self.imgs, self.animation_rate)

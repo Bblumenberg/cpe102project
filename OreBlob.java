@@ -12,14 +12,16 @@ public class OreBlob extends ActionedEntity{
     
     public Point blobNextPosition(WorldModel world, Point destPt){
         int horiz = Sign.compare(destPt.getX() - position.getX());
-        Point newPt = Point(position.getX() + horiz, position.getY());
+        Point newPt = new Point(position.getX() + horiz, position.getY());
         if(horiz == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt).isInstance(Ore.class))){
             int vert = Sign.compare(destPt.getY() - position.getY());
-            Point newPt(position.getX(), position.getY() + vert);
+            newPt = Point(position.getX(), position.getY() + vert);
             if(vert == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt).isInstance(Ore.class))){
                 Point newPt = position;
             }
         }
         return newPt;
     }
+    
+    public blobToVein
 }
