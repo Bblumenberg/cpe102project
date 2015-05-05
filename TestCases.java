@@ -49,7 +49,7 @@ public class TestCases
         //Due to UnitTest or this being a different mehtod?
     }
 
-    private OccGrid mygrid = new OccGrid(2,2,null);
+    private OccGrid mygrid = new OccGrid<Object>(2,2,null);
     
     @Test
     public void TestOccGrid(){
@@ -72,10 +72,10 @@ public class TestCases
     }
     
     WorldModel myWorld = new WorldModel(2,2, bg);
-//    myWorld.addEntity(obs);
     
     @Test
     public void TestAddEntity(){
+        myWorld.addEntity(obs);
         assertTrue(myWorld.getTileOccupant(position1) == obs);
         assertTrue(myWorld.getEntities().contains(obs));
     }
@@ -89,12 +89,14 @@ public class TestCases
     
     @Test
     public void TestIsOccupied(){
+        myWorld.addEntity(obs);
         assertTrue(myWorld.isOccupied(position1));
         assertFalse(myWorld.isOccupied(position2));
     }
-/*
+
     @Test
     public void TestFindNearest(){
+        myWorld.addEntity(obs);
         assertTrue(myWorld.findNearest(position2, Obstacle.class) == obs);
     }
     
@@ -102,7 +104,7 @@ public class TestCases
     public void TestFindNearestNull(){
         assertTrue(myWorld.findNearest(position2, Vein.class) == null);
     }
-*/
+
     @Test
     public void TestMoveEntity(){
         List<Point> tiles = myWorld.moveEntity(obs, position2);
@@ -112,12 +114,14 @@ public class TestCases
 
     @Test
     public void TestRemoveEntity(){
+        myWorld.addEntity(obs);
         myWorld.removeEntity(obs);
         assertTrue(myWorld.getEntities().size() == 0 && myWorld.getTileOccupant(obs.getPosition()) == null);
     }
     
     @Test
     public void TestRemoveEntityAt(){
+        myWorld.addEntity(obs);
         myWorld.removeEntityAt(obs.getPosition());
         assertTrue(myWorld.getEntities().size() == 0 && myWorld.getTileOccupant(obs.getPosition()) == null);
     }
@@ -135,6 +139,7 @@ public class TestCases
     
     @Test
     public void TestGetTileOccupant(){
+        myWorld.addEntity(obs);
         assertTrue(myWorld.getTileOccupant(position1) == obs);
     }
 }

@@ -26,33 +26,32 @@ public class WorldModel{
         return (this.withinBounds(pt) && this.occupancy.getCell(pt) != null);
     }
 
-    public Entity findNearest(Point pt, Class type){
-        List<TwoTuple<PositionedEntity, Integer>> oftype = new ArrayList<TwoTuple<PositionedEntity, Integer>>(this.entities.size());
+    public PositionedEntity findNearest(Point pt, Class type){
+        List<EntInt> oftype = new ArrayList<EntInt>(this.entities.size());
         int i = 0;
         for(PositionedEntity e : this.entities){
             if(e.getClass() == type){
-                oftype.add(new TwoTuple<PositionedEntity, Integer>(e, pt.distanceSq(e.getPosition())));
+                oftype.add(new EntInt(e, pt.distanceSq(e.getPosition())));
             }
         }
         return this.nearestEntity(oftype);
     }
     
-    public Entity nearestEntity(List<TwoTuple<PositionedEntity, Integer>> entityDists){
+    public PositionedEntity nearestEntity(List<EntInt> entityDists){
         if(entityDists.size() > 0){
-            TwoTuple pair = entityDists.get(0);
-            int otherint = other.getR()
-            int pairint = pair.getR()
-            for(TwoTuple other : entityDists){
-                if(otherint - pairint){
+            EntInt pair = entityDists.get(0);
+            for(EntInt other : entityDists){
+                int pairint = pair.getR();
+                int otherint = other.getR();
+                if(otherint < pairint){
                     pair = other;
                 }
             }
-            PositionedEntity nearest = pair.getL();
+            return pair.getL();
         }
         else{
-            PositionedEntity nearest = null;
+            return null;
         }
-        return nearest;
     }
 
     public void addEntity(PositionedEntity entity){

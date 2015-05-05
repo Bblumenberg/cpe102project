@@ -10,6 +10,7 @@
 		B5059C211AF808A90043B1B3 /* Miner.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Miner.java; sourceTree = "<group>"; };
 		B5059C221AF80B440043B1B3 /* MinerNotFull.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = MinerNotFull.java; sourceTree = "<group>"; };
 		B5059C231AF811350043B1B3 /* MinerFull.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = MinerFull.java; sourceTree = "<group>"; };
+		B5059C241AF8733E0043B1B3 /* EntInt.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = EntInt.java; sourceTree = "<group>"; };
 		B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = TwoTuple.java; sourceTree = "<group>"; };
 		B557AEDF1AF840D30049BC4D /* EasyList.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = EasyList.java; sourceTree = "<group>"; };
 		B570770E1AF44EDD00E63066 /* Ore.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Ore.java; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */,
+				B5059C241AF8733E0043B1B3 /* EntInt.java */,
 				B5887BF91AEC3E7C00867E49 /* WorldModel.java */,
 				B5887BFA1AEC3F0600867E49 /* OccGrid.java */,
 				B5887BF81AEC3C7A00867E49 /* Vein.java */,
