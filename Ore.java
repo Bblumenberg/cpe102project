@@ -5,6 +5,6 @@ public class Ore extends ActionedEntity{
     }
     
     public Ore(String name, Point position){
-        super(name, position, double 5000, "ore");
+        super(name, position, 5000, "ore");
     }
 }

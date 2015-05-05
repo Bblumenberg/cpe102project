@@ -1,7 +1,7 @@
 public abstract class ResourceEntity extends ActionedEntity{
 
-    private int resourceLimit;
-    private int resourceCount;
+    protected int resourceLimit;
+    protected int resourceCount;
     public ResourceEntity(String name, Point position, double rate, int resourceLimit, int resourceCount, String type){
         super(name, position, rate, type);
         this.resourceLimit = resourceLimit;

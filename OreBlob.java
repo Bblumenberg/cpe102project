@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class OreBlob extends ActionedEntity{
     private int animationRate;
     
@@ -11,17 +13,34 @@ public class OreBlob extends ActionedEntity{
     }
     
     public Point blobNextPosition(WorldModel world, Point destPt){
-        int horiz = Sign.compare(destPt.getX() - position.getX());
+        int horiz = Sign.compare(destPt.getX(), position.getX());
         Point newPt = new Point(position.getX() + horiz, position.getY());
-        if(horiz == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt).isInstance(Ore.class))){
-            int vert = Sign.compare(destPt.getY() - position.getY());
+        if(horiz == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt) instanceof Ore)){
+            int vert = Sign.compare(destPt.getY(), position.getY());
             newPt = Point(position.getX(), position.getY() + vert);
-            if(vert == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt).isInstance(Ore.class))){
+            if(vert == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt) instanceof Ore)){
                 Point newPt = position;
             }
         }
         return newPt;
     }
     
-    public blobToVein
+    public TwoTuple<List<Point>,Boolean> blobToVein(WorldModel world, Vein vein){
+        if(vein == null){
+            return new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(position), false);
+        }
+        Point veinPt = vein.getPosition();
+        if(position.adjacent(veinPt)){
+            world.removeEntity(vein);
+            eturn new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(veinPt), true);
+        }
+        else{
+            Point newPt = blobNextPosition(world, veinPt);
+            PositionedEntity oldEntity = world.getTileOccupant(newPt);
+            if(oldEntity instanceof Ore){
+                world.removeEntity(oldEntity);
+            }
+            return new TwoTuple<List<Point>,Boolean>(world.moveEntity(this, newPt), false);
+        }
+    }
 }

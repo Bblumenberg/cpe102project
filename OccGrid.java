@@ -10,13 +10,13 @@ public class OccGrid<T>{
     public OccGrid(int width, int height, T value){
         this.width = width;
         this.height = height;
-        this.grid  = new ArrayList<List<T>>(height);
+        this.grid  = new ArrayList<List<T>>(0);
         for(int y = 0; y < height; y++){
             List<T> inner = new ArrayList<T>(0);
             for(int x = 0; x < width; x++){
-//                inner.add(value);
+                inner.add(value);
             }
-            grid.set(y, inner);
+            grid.add(inner);
         }
     }
     

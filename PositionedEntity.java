@@ -2,7 +2,7 @@ import java.lang.String;
 
 public abstract class PositionedEntity extends Entity{
     
-    private Point position;
+    protected Point position;
     private String type;
     public PositionedEntity(String name, Point position, String type){
         super(name);
