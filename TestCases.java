@@ -195,7 +195,7 @@ public class TestCases
         assertTrue(tup.getL().get(1).getX() == 1 && tup.getL().get(1).getY() == 0 && tup.getR() == false);
         assertTrue(myMiner.getPosition().getX() == 1 && myMiner.getPosition().getY() == 0);
         tup = myMiner.minerToOre(myWorld, myOre);
-        assertTrue(tup.getL().get(0).getX() == 1 && tup.getL().get(0).getX() == 1 && tup.getR() == true);
+        assertTrue(tup.getL().get(0).getX() == 1 && tup.getL().get(0).getY() == 1 && tup.getR() == true);
         assertFalse(myWorld.getEntities().contains(myOre));
         assertTrue(myMiner.getResourceCount() == 1);
     }
@@ -242,7 +242,17 @@ public class TestCases
     OreBlob myBlob = new OreBlob("blob", position1, 100, 100);
     
     @Test
-    public void 
+    public void TestBlobtoVein(){
+        myWorld.addEntity(myBlob);
+        myVein.setPosition(position4);
+        myWorld.addEntity(myVein);
+        TwoTuple<List<Point>,Boolean> tup = myBlob.blobToVein(myWorld, myVein);
+        assertTrue(tup.getL().get(1).getX() == 1 && tup.getL().get(1).getY() == 0 && tup.getR() == false);
+        assertTrue(myBlob.getPosition().getX() == 1 && myBlob.getPosition().getY() == 0);
+        tup = myBlob.blobToVein(myWorld, myVein);
+        assertTrue(tup.getL().get(0).getX() == 1 && tup.getL().get(0).getY() == 1 && tup.getR() == true);
+        assertFalse(myWorld.getEntities().contains(myVein));
+    }
     
     //Sign and EasyList were implicitly tested in several other method tests.
 }

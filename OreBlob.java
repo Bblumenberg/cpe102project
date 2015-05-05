@@ -17,9 +17,9 @@ public class OreBlob extends ActionedEntity{
         Point newPt = new Point(position.getX() + horiz, position.getY());
         if(horiz == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt) instanceof Ore)){
             int vert = Sign.compare(destPt.getY(), position.getY());
-            newPt = Point(position.getX(), position.getY() + vert);
+            newPt = new Point(position.getX(), position.getY() + vert);
             if(vert == 0 || world.isOccupied(newPt) && !(world.getTileOccupant(newPt) instanceof Ore)){
-                Point newPt = position;
+                newPt = position;
             }
         }
         return newPt;
@@ -32,7 +32,7 @@ public class OreBlob extends ActionedEntity{
         Point veinPt = vein.getPosition();
         if(position.adjacent(veinPt)){
             world.removeEntity(vein);
-            eturn new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(veinPt), true);
+            return new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(veinPt), true);
         }
         else{
             Point newPt = blobNextPosition(world, veinPt);
