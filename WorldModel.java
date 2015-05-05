@@ -68,7 +68,7 @@ public class WorldModel{
     }
     
     public List<Point> moveEntity(PositionedEntity entity, Point pt){
-        List<Point> tiles = new LinkedList<Point>();
+        List<Point> tiles = new ArrayList<Point>();
         if(this.withinBounds(pt)){
             Point oldPt = entity.getPosition();
             this.occupancy.setCell(oldPt, null);
