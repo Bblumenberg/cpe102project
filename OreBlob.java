@@ -3,7 +3,7 @@ import java.util.List;
 public class OreBlob extends ActionedEntity{
     private int animationRate;
     
-    public OreBlob(String name, Point position, double rate, int animationRate){
+    public OreBlob(String name, Point position, int rate, int animationRate){
         super(name, position, rate, "blob");
         this.animationRate = animationRate;
     }

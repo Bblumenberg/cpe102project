@@ -1,12 +1,12 @@
 public abstract class ActionedEntity extends PositionedEntity{
     
-    private double rate;
-    public ActionedEntity(String name, Point position, double rate, String type){
+    private int rate;
+    public ActionedEntity(String name, Point position, int rate, String type){
         super(name, position, type);
         this.rate = rate;
     }
     
-    public double getRate(){
+    public int getRate(){
         return this.rate;
     }
 }

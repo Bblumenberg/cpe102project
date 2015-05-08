@@ -2,7 +2,7 @@ import java.util.List;
 
 public class MinerNotFull extends Miner{
 
-    public MinerNotFull(String name, int resourceLimit, Point position, double rate, double animationRate){
+    public MinerNotFull(String name, int resourceLimit, Point position, int rate, int animationRate){
         super(name, resourceLimit, position, rate, animationRate, 0);
     }
     

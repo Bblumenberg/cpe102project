@@ -1,11 +1,11 @@
 public abstract class Miner extends ResourceEntity{
 
-    protected double animationRate;
-    public Miner(String name, int resourceLimit, Point position, double rate, double animationRate, int resourceCount){
+    protected int animationRate;
+    public Miner(String name, int resourceLimit, Point position, int rate, int animationRate, int resourceCount){
         super(name, position, rate, resourceLimit, resourceCount, "miner");
     }
     
-    public double getAnimationRate(){return animationRate;}
+    public int getAnimationRate(){return animationRate;}
     
     public Point nextPosition(WorldModel world, Point destPt){
         int horiz = Sign.compare(destPt.getX(), position.getX());

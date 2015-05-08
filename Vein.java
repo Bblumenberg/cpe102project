@@ -1,12 +1,12 @@
 public class Vein extends ActionedEntity{
 
     private int resourceDistance;
-    public Vein(String name, double rate, Point position, int resourceDistance){
+    public Vein(String name, int rate, Point position, int resourceDistance){
         super(name, position, rate, "vein");
         this.resourceDistance = resourceDistance;
     }
     
-    public Vein(String name, double rate, Point position){
+    public Vein(String name, int rate, Point position){
         super(name, position, rate, "vein");
         this.resourceDistance = 1;
     }
