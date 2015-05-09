@@ -19,7 +19,7 @@
 		B57077111AF4582000E63066 /* Quake.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = Quake.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B57077121AF4596C00E63066 /* ResourceEntity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = ResourceEntity.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B57077131AF45B2A00E63066 /* Blacksmith.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = Blacksmith.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
-		B57A147C1AFD41C100EC9FA8 /* SaveLoad.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = SaveLoad.java; sourceTree = "<group>"; };
+		B57A147C1AFD41C100EC9FA8 /* ProcessWorld.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = ProcessWorld.java; sourceTree = "<group>"; };
 		B5887BF01AEB5BAB00867E49 /* Entity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Entity.java; sourceTree = "<group>"; };
 		B5887BF11AEB62F900867E49 /* Point.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Point.java; sourceTree = "<group>"; };
 		B5887BF31AEB670400867E49 /* TestCases.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = TestCases.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
@@ -98,32 +98,33 @@
 			children = (
 				B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */,
 				B5059C241AF8733E0043B1B3 /* EntInt.java */,
+				B557AEDF1AF840D30049BC4D /* EasyList.java */,
+				B57077101AF452CA00E63066 /* Sign.java */,
+				B5887BF11AEB62F900867E49 /* Point.java */,
 				B5887BF91AEC3E7C00867E49 /* WorldModel.java */,
 				B5887BFA1AEC3F0600867E49 /* OccGrid.java */,
-				B5887BF81AEC3C7A00867E49 /* Vein.java */,
 				B5887BF01AEB5BAB00867E49 /* Entity.java */,
 				B5887BF41AEB6D6600867E49 /* Background.java */,
 				B5887BF51AEB6D9000867E49 /* PositionedEntity.java */,
 				B5887BF61AEB6DB400867E49 /* Obstacle.java */,
-				B5887BF11AEB62F900867E49 /* Point.java */,
 				B5887BF71AEC3B1000867E49 /* ActionedEntity.java */,
+				B5887BF81AEC3C7A00867E49 /* Vein.java */,
 				B570770E1AF44EDD00E63066 /* Ore.java */,
+				B57077111AF4582000E63066 /* Quake.java */,
+				B570770F1AF44FF900E63066 /* OreBlob.java */,
+				B57077121AF4596C00E63066 /* ResourceEntity.java */,
+				B57077131AF45B2A00E63066 /* Blacksmith.java */,
+				B5059C211AF808A90043B1B3 /* Miner.java */,
+				B5059C221AF80B440043B1B3 /* MinerNotFull.java */,
+				B5059C231AF811350043B1B3 /* MinerFull.java */,
 				B5887BF31AEB670400867E49 /* TestCases.java */,
+				B57A147C1AFD41C100EC9FA8 /* ProcessWorld.java */,
 				B5B89DEF1AD3AAAA004BB646 /* actions.py */,
 				B5B89DF11AD3AAAA004BB646 /* builder_controller.py */,
 				B5B89DF21AD3AAAA004BB646 /* builder.py */,
 				B5B89DF31AD3AAAA004BB646 /* controller.py */,
 				B5B89DF51AD3AAAA004BB646 /* DESIGN */,
 				B5B89DF61AD3AAAA004BB646 /* entities.py */,
-				B57077121AF4596C00E63066 /* ResourceEntity.java */,
-				B57077131AF45B2A00E63066 /* Blacksmith.java */,
-				B5059C211AF808A90043B1B3 /* Miner.java */,
-				B5059C221AF80B440043B1B3 /* MinerNotFull.java */,
-				B5059C231AF811350043B1B3 /* MinerFull.java */,
-				B557AEDF1AF840D30049BC4D /* EasyList.java */,
-				B57077111AF4582000E63066 /* Quake.java */,
-				B570770F1AF44FF900E63066 /* OreBlob.java */,
-				B57077101AF452CA00E63066 /* Sign.java */,
 				B5B89DF81AD3AAAA004BB646 /* gaia.sav */,
 				B5B89DF91AD3AAAA004BB646 /* image_store.py */,
 				B5B89DFB1AD3AAAA004BB646 /* imagelist */,
@@ -135,7 +136,6 @@
 				B5B89E2C1AD3AAAA004BB646 /* ordered_list.py */,
 				B5B89E2E1AD3AAAA004BB646 /* point.py */,
 				B5B89E301AD3AAAA004BB646 /* save_load.py */,
-				B57A147C1AFD41C100EC9FA8 /* SaveLoad.java */,
 				B5B89E321AD3AAAA004BB646 /* worldmodel.py */,
 				B5B89E341AD3AAAA004BB646 /* worldview.py */,
 			);

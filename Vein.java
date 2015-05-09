@@ -4,6 +4,7 @@ public class Vein extends ActionedEntity{
     public Vein(String name, int rate, Point position, int resourceDistance){
         super(name, position, rate, "vein");
         this.resourceDistance = resourceDistance;
+        imgs.add("images/vein.bmp");
     }
     
     public Vein(String name, int rate, Point position){

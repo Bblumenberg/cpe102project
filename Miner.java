@@ -3,6 +3,9 @@ public abstract class Miner extends ResourceEntity{
     protected int animationRate;
     public Miner(String name, int resourceLimit, Point position, int rate, int animationRate, int resourceCount){
         super(name, position, rate, resourceLimit, resourceCount, "miner");
+        for(int i = 1; i <= 5; i++){
+            imgs.add("images/miner" + i.asString() + ".bmp");
+        }
     }
     
     public int getAnimationRate(){return animationRate;}

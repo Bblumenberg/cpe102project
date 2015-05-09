@@ -6,6 +6,9 @@ public class OreBlob extends ActionedEntity{
     public OreBlob(String name, Point position, int rate, int animationRate){
         super(name, position, rate, "blob");
         this.animationRate = animationRate;
+        for(int i = 1; i <= 12; i++){
+            imgs.add("images/blob" + i.asString() + ".bmp");
+        }
     }
     
     public int getAnimationRate(){
