@@ -5,8 +5,8 @@ import java.util.Comparator;
 
 public class WorldModel{
 
-    private int numRows;
-    private int numCols;
+    public int numRows;
+    public int numCols;
     private OccGrid<Background> background;
     private OccGrid<PositionedEntity> occupancy;
     private List<PositionedEntity> entities;
