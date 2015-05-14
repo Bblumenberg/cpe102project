@@ -1,7 +1,11 @@
+import processing.core.*;
+import java.util.List;
+
 public class Obstacle extends PositionedEntity{
     
-    public Obstacle(String name, Point position){
-        super(name, position, "obstacle");
-        imgs.add("images/obstacle.bmp");
+    public Obstacle(String name, List<PImage> imgs, Point position){
+        super(name, imgs, position, "obstacle");
     }
+    
+    public int getAnimationRate(){return 0;}
 }

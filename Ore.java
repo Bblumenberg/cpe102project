@@ -1,12 +1,15 @@
+import processing.core.*;
+import java.util.List;
+
 public class Ore extends ActionedEntity{
  
-    public Ore(String name, Point position, int rate){
-        super(name, position, rate, "ore");
-        imgs.add("images/ore.bmp");
+    public Ore(String name, List<PImage> imgs, Point position, int rate){
+        super(name, imgs, position, rate, "ore");
     }
     
-    public Ore(String name, Point position){
-        super(name, position, 5000, "ore");
-        imgs.add("images/ore.bmp");
+    public Ore(String name, List<PImage> imgs, Point position){
+        super(name, imgs, position, 5000, "ore");
     }
+    
+    public int getAnimationRate(){return 0;}
 }

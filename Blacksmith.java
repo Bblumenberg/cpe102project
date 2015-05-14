@@ -1,15 +1,18 @@
+import processing.core.*;
+import java.util.List;
+
 public class Blacksmith extends ResourceEntity{
 
     private int resourceDistance;
-    public Blacksmith(String name, Point position, int resourceLimit, int rate, int resourceDistance){
-        super(name, position, rate, resourceLimit, 0, "blacksmith");
+    public Blacksmith(String name, List<PImage> imgs, Point position, int resourceLimit, int rate, int resourceDistance){
+        super(name, imgs, position, rate, resourceLimit, 0, "blacksmith");
         this.resourceDistance = resourceDistance;
-        imgs.add("images/blacksmith.bmp");
     }
     
-    public Blacksmith(String name, Point position, int resourceLimit, int rate){
-        super(name, position, rate, resourceLimit, 0, "blacksmith");
+    public Blacksmith(String name, List<PImage> imgs, Point position, int resourceLimit, int rate){
+        super(name, imgs, position, rate, resourceLimit, 0, "blacksmith");
         this.resourceDistance = 1;
-        imgs.add("images/blacksmith.bmp");
     }
+    
+    public int getAnimationRate(){return 0;}
 }

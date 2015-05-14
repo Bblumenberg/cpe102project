@@ -1,8 +1,11 @@
+import java.util.List;
+import processing.core.*;
+
 public abstract class ActionedEntity extends PositionedEntity{
     
-    private int rate;
-    public ActionedEntity(String name, Point position, int rate, String type){
-        super(name, position, type);
+    protected int rate;
+    public ActionedEntity(String name, List<PImage> imgs, Point position, int rate, String type){
+        super(name, imgs, position, type);
         this.rate = rate;
     }
     

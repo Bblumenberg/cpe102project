@@ -19,7 +19,7 @@
 		B57077111AF4582000E63066 /* Quake.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = Quake.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B57077121AF4596C00E63066 /* ResourceEntity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = ResourceEntity.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B57077131AF45B2A00E63066 /* Blacksmith.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = Blacksmith.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
-		B577B3121B0049E40010FD54 /* SaveLoad.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = SaveLoad.java; sourceTree = "<group>"; };
+		B577B3121B0049E40010FD54 /* SaveLoad.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = SaveLoad.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B57A147C1AFD41C100EC9FA8 /* ProcessWorld.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = ProcessWorld.java; sourceTree = "<group>"; };
 		B5887BF01AEB5BAB00867E49 /* Entity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Entity.java; sourceTree = "<group>"; };
 		B5887BF11AEB62F900867E49 /* Point.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Point.java; sourceTree = "<group>"; };
@@ -40,48 +40,6 @@
 		B5B89DF81AD3AAAA004BB646 /* gaia.sav */ = {isa = PBXFileReference; lastKnownFileType = text; path = gaia.sav; sourceTree = "<group>"; };
 		B5B89DF91AD3AAAA004BB646 /* image_store.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = image_store.py; sourceTree = "<group>"; tabWidth = 3; };
 		B5B89DFB1AD3AAAA004BB646 /* imagelist */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text; path = imagelist; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89DFD1AD3AAAA004BB646 /* blacksmith.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blacksmith.bmp; sourceTree = "<group>"; };
-		B5B89DFE1AD3AAAA004BB646 /* blob1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob1.bmp; sourceTree = "<group>"; };
-		B5B89DFF1AD3AAAA004BB646 /* blob10.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob10.bmp; sourceTree = "<group>"; };
-		B5B89E001AD3AAAA004BB646 /* blob11.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob11.bmp; sourceTree = "<group>"; };
-		B5B89E011AD3AAAA004BB646 /* blob12.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob12.bmp; sourceTree = "<group>"; };
-		B5B89E021AD3AAAA004BB646 /* blob2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob2.bmp; sourceTree = "<group>"; };
-		B5B89E031AD3AAAA004BB646 /* blob3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob3.bmp; sourceTree = "<group>"; };
-		B5B89E041AD3AAAA004BB646 /* blob4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob4.bmp; sourceTree = "<group>"; };
-		B5B89E051AD3AAAA004BB646 /* blob5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob5.bmp; sourceTree = "<group>"; };
-		B5B89E061AD3AAAA004BB646 /* blob6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob6.bmp; sourceTree = "<group>"; };
-		B5B89E071AD3AAAA004BB646 /* blob7.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob7.bmp; sourceTree = "<group>"; };
-		B5B89E081AD3AAAA004BB646 /* blob8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob8.bmp; sourceTree = "<group>"; };
-		B5B89E091AD3AAAA004BB646 /* blob9.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = blob9.bmp; sourceTree = "<group>"; };
-		B5B89E0A1AD3AAAA004BB646 /* freeze1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze1.bmp; sourceTree = "<group>"; };
-		B5B89E0B1AD3AAAA004BB646 /* freeze2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze2.bmp; sourceTree = "<group>"; };
-		B5B89E0C1AD3AAAA004BB646 /* freeze3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze3.bmp; sourceTree = "<group>"; };
-		B5B89E0D1AD3AAAA004BB646 /* freeze4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = freeze4.bmp; sourceTree = "<group>"; };
-		B5B89E0E1AD3AAAA004BB646 /* grass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grass.bmp; sourceTree = "<group>"; };
-		B5B89E0F1AD3AAAA004BB646 /* miner1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner1.bmp; sourceTree = "<group>"; };
-		B5B89E101AD3AAAA004BB646 /* miner2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner2.bmp; sourceTree = "<group>"; };
-		B5B89E111AD3AAAA004BB646 /* miner3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner3.bmp; sourceTree = "<group>"; };
-		B5B89E121AD3AAAA004BB646 /* miner4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner4.bmp; sourceTree = "<group>"; };
-		B5B89E131AD3AAAA004BB646 /* miner5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = miner5.bmp; sourceTree = "<group>"; };
-		B5B89E141AD3AAAA004BB646 /* none.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = none.bmp; sourceTree = "<group>"; };
-		B5B89E151AD3AAAA004BB646 /* obstacle.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = obstacle.bmp; sourceTree = "<group>"; };
-		B5B89E161AD3AAAA004BB646 /* ore.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ore.bmp; sourceTree = "<group>"; };
-		B5B89E171AD3AAAA004BB646 /* quake1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake1.bmp; sourceTree = "<group>"; };
-		B5B89E181AD3AAAA004BB646 /* quake2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake2.bmp; sourceTree = "<group>"; };
-		B5B89E191AD3AAAA004BB646 /* quake3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake3.bmp; sourceTree = "<group>"; };
-		B5B89E1A1AD3AAAA004BB646 /* quake4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake4.bmp; sourceTree = "<group>"; };
-		B5B89E1B1AD3AAAA004BB646 /* quake5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake5.bmp; sourceTree = "<group>"; };
-		B5B89E1C1AD3AAAA004BB646 /* quake6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = quake6.bmp; sourceTree = "<group>"; };
-		B5B89E1D1AD3AAAA004BB646 /* rock.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = rock.bmp; sourceTree = "<group>"; };
-		B5B89E1E1AD3AAAA004BB646 /* vein.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = vein.bmp; sourceTree = "<group>"; };
-		B5B89E1F1AD3AAAA004BB646 /* wyvern1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern1.bmp; sourceTree = "<group>"; };
-		B5B89E201AD3AAAA004BB646 /* wyvern2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern2.bmp; sourceTree = "<group>"; };
-		B5B89E211AD3AAAA004BB646 /* wyvern3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern3.bmp; sourceTree = "<group>"; };
-		B5B89E221AD3AAAA004BB646 /* wyvern4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern4.bmp; sourceTree = "<group>"; };
-		B5B89E231AD3AAAA004BB646 /* wyvern5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern5.bmp; sourceTree = "<group>"; };
-		B5B89E241AD3AAAA004BB646 /* wyvern6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern6.bmp; sourceTree = "<group>"; };
-		B5B89E251AD3AAAA004BB646 /* wyvern7.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern7.bmp; sourceTree = "<group>"; };
-		B5B89E261AD3AAAA004BB646 /* wyvern8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wyvern8.bmp; sourceTree = "<group>"; };
 		B5B89E271AD3AAAA004BB646 /* keys.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = keys.py; sourceTree = "<group>"; tabWidth = 3; };
 		B5B89E281AD3AAAA004BB646 /* main.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; tabWidth = 3; };
 		B5B89E291AD3AAAA004BB646 /* mouse_buttons.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = mouse_buttons.py; sourceTree = "<group>"; tabWidth = 3; };
@@ -91,6 +49,11 @@
 		B5B89E301AD3AAAA004BB646 /* save_load.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = save_load.py; sourceTree = "<group>"; tabWidth = 3; };
 		B5B89E321AD3AAAA004BB646 /* worldmodel.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; lineEnding = 0; path = worldmodel.py; sourceTree = "<group>"; tabWidth = 3; xcLanguageSpecificationIdentifier = xcode.lang.python; };
 		B5B89E341AD3AAAA004BB646 /* worldview.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = worldview.py; sourceTree = "<group>"; tabWidth = 3; };
+		B5FB20711B01B7F90037B087 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		B5FB20721B03D32E0037B087 /* Animations.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Animations.java; sourceTree = "<group>"; };
+		B5FB20751B044C7A0037B087 /* Actions.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Actions.java; sourceTree = "<group>"; };
+		B5FB20761B04664D0037B087 /* ScheduledAction.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = ScheduledAction.java; sourceTree = "<group>"; };
+		B5FB20771B0466D60037B087 /* Action.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Action.java; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -120,6 +83,10 @@
 				B5059C231AF811350043B1B3 /* MinerFull.java */,
 				B5887BF31AEB670400867E49 /* TestCases.java */,
 				B57A147C1AFD41C100EC9FA8 /* ProcessWorld.java */,
+				B5FB20751B044C7A0037B087 /* Actions.java */,
+				B5FB20761B04664D0037B087 /* ScheduledAction.java */,
+				B5FB20771B0466D60037B087 /* Action.java */,
+				B5FB20721B03D32E0037B087 /* Animations.java */,
 				B577B3121B0049E40010FD54 /* SaveLoad.java */,
 				B5B89E301AD3AAAA004BB646 /* save_load.py */,
 				B5B89DEF1AD3AAAA004BB646 /* actions.py */,
@@ -128,10 +95,9 @@
 				B5B89DF31AD3AAAA004BB646 /* controller.py */,
 				B5B89DF51AD3AAAA004BB646 /* DESIGN */,
 				B5B89DF61AD3AAAA004BB646 /* entities.py */,
-				B5B89DF81AD3AAAA004BB646 /* gaia.sav */,
 				B5B89DF91AD3AAAA004BB646 /* image_store.py */,
+				B5B89DF81AD3AAAA004BB646 /* gaia.sav */,
 				B5B89DFB1AD3AAAA004BB646 /* imagelist */,
-				B5B89DFC1AD3AAAA004BB646 /* images */,
 				B5B89E271AD3AAAA004BB646 /* keys.py */,
 				B5B89E281AD3AAAA004BB646 /* main.py */,
 				B5B89E291AD3AAAA004BB646 /* mouse_buttons.py */,
@@ -140,59 +106,9 @@
 				B5B89E2E1AD3AAAA004BB646 /* point.py */,
 				B5B89E321AD3AAAA004BB646 /* worldmodel.py */,
 				B5B89E341AD3AAAA004BB646 /* worldview.py */,
+				B5FB20711B01B7F90037B087 /* images */,
 			);
 			sourceTree = "<group>";
-		};
-		B5B89DFC1AD3AAAA004BB646 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				B5B89DFD1AD3AAAA004BB646 /* blacksmith.bmp */,
-				B5B89DFE1AD3AAAA004BB646 /* blob1.bmp */,
-				B5B89DFF1AD3AAAA004BB646 /* blob10.bmp */,
-				B5B89E001AD3AAAA004BB646 /* blob11.bmp */,
-				B5B89E011AD3AAAA004BB646 /* blob12.bmp */,
-				B5B89E021AD3AAAA004BB646 /* blob2.bmp */,
-				B5B89E031AD3AAAA004BB646 /* blob3.bmp */,
-				B5B89E041AD3AAAA004BB646 /* blob4.bmp */,
-				B5B89E051AD3AAAA004BB646 /* blob5.bmp */,
-				B5B89E061AD3AAAA004BB646 /* blob6.bmp */,
-				B5B89E071AD3AAAA004BB646 /* blob7.bmp */,
-				B5B89E081AD3AAAA004BB646 /* blob8.bmp */,
-				B5B89E091AD3AAAA004BB646 /* blob9.bmp */,
-				B5B89E0A1AD3AAAA004BB646 /* freeze1.bmp */,
-				B5B89E0B1AD3AAAA004BB646 /* freeze2.bmp */,
-				B5B89E0C1AD3AAAA004BB646 /* freeze3.bmp */,
-				B5B89E0D1AD3AAAA004BB646 /* freeze4.bmp */,
-				B5B89E0E1AD3AAAA004BB646 /* grass.bmp */,
-				B5B89E0F1AD3AAAA004BB646 /* miner1.bmp */,
-				B5B89E101AD3AAAA004BB646 /* miner2.bmp */,
-				B5B89E111AD3AAAA004BB646 /* miner3.bmp */,
-				B5B89E121AD3AAAA004BB646 /* miner4.bmp */,
-				B5B89E131AD3AAAA004BB646 /* miner5.bmp */,
-				B5B89E141AD3AAAA004BB646 /* none.bmp */,
-				B5B89E151AD3AAAA004BB646 /* obstacle.bmp */,
-				B5B89E161AD3AAAA004BB646 /* ore.bmp */,
-				B5B89E171AD3AAAA004BB646 /* quake1.bmp */,
-				B5B89E181AD3AAAA004BB646 /* quake2.bmp */,
-				B5B89E191AD3AAAA004BB646 /* quake3.bmp */,
-				B5B89E1A1AD3AAAA004BB646 /* quake4.bmp */,
-				B5B89E1B1AD3AAAA004BB646 /* quake5.bmp */,
-				B5B89E1C1AD3AAAA004BB646 /* quake6.bmp */,
-				B5B89E1D1AD3AAAA004BB646 /* rock.bmp */,
-				B5B89E1E1AD3AAAA004BB646 /* vein.bmp */,
-				B5B89E1F1AD3AAAA004BB646 /* wyvern1.bmp */,
-				B5B89E201AD3AAAA004BB646 /* wyvern2.bmp */,
-				B5B89E211AD3AAAA004BB646 /* wyvern3.bmp */,
-				B5B89E221AD3AAAA004BB646 /* wyvern4.bmp */,
-				B5B89E231AD3AAAA004BB646 /* wyvern5.bmp */,
-				B5B89E241AD3AAAA004BB646 /* wyvern6.bmp */,
-				B5B89E251AD3AAAA004BB646 /* wyvern7.bmp */,
-				B5B89E261AD3AAAA004BB646 /* wyvern8.bmp */,
-			);
-			indentWidth = 3;
-			path = images;
-			sourceTree = "<group>";
-			tabWidth = 3;
 		};
 /* End PBXGroup section */
 

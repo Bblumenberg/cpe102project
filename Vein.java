@@ -1,14 +1,16 @@
+import processing.core.*;
+import java.util.List;
+
 public class Vein extends ActionedEntity{
 
     private int resourceDistance;
-    public Vein(String name, int rate, Point position, int resourceDistance){
-        super(name, position, rate, "vein");
+    public Vein(String name, List<PImage> imgs, int rate, Point position, int resourceDistance){
+        super(name, imgs, position, rate, "vein");
         this.resourceDistance = resourceDistance;
-        imgs.add("images/vein.bmp");
     }
     
-    public Vein(String name, int rate, Point position){
-        super(name, position, rate, "vein");
+    public Vein(String name, List<PImage> imgs, int rate, Point position){
+        super(name, imgs, position, rate, "vein");
         this.resourceDistance = 1;
     }
     
@@ -23,4 +25,20 @@ public class Vein extends ActionedEntity{
         }
         return null;
     }
+    
+    public void createNextAction(WorldModel world){
+        ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<Vein>(){
+            public void method(Vein e, WorldModel world){
+                Point openPt = e.findOpenAround(world, position, resourceDistance);
+                if(openPt != null){
+                    Ore ore = new Ore("ore - " + getName() + " - " + System.currentTimeMillis(), ProcessWorld.oreImgs, openPt);
+                    world.addEntity(ore);
+                }
+                e.createNextAction(world);
+            }
+        });
+        Actions.addAction(myAction);
+    }
+    
+    public int getAnimationRate(){return 0;}
 }

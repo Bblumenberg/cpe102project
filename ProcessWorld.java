@@ -1,33 +1,177 @@
 import java.util.List;
 import java.util.ArrayList;
 import processing.core.*;
-import java.util.scanner;
 
 public class ProcessWorld extends PApplet{
 
-    private static final int AMINATION_TIME = 100;
+    private static final int ANIMATION_TIME = 100;
 
     private static final int WORLD_WIDTH_SCALE = 2;
     private static final int WORLD_HEIGHT_SCALE = 2;
     
-    private static final int SCREEN_WIDTH = 640;
-    private static final int SCREEN_HEIGHT = 480;
-    private static final int TILE_WIDTH = 32;
-    private static final int TILE_HEIGHT = 32;
+    private static final int SCREEN_WIDTH_PX = 640;
+    private static final int SCREEN_HEIGHT_PX = 480;
+    private static final int TILE_WIDTH_PX = 32;
+    private static final int TILE_HEIGHT_PX = 32;
+    private static final int SCREEN_HEIGHT = SCREEN_HEIGHT_PX/TILE_HEIGHT_PX;
+    private static final int SCREEN_WIDTH = SCREEN_WIDTH_PX/TILE_WIDTH_PX;
+    private static final int WORLD_HEIGHT = SCREEN_HEIGHT * WORLD_HEIGHT_SCALE;
+    private static final int WORLD_WIDTH = SCREEN_WIDTH * WORLD_WIDTH_SCALE;
     
+    public WorldModel world;
     private Entity[][] worldView;
+    public Point SCREEN_START;
+    
+    private long next_time;
+    
+    public static List<PImage> backgroundImgs;
+    public static List<PImage> obstacleImgs;
+    public static List<PImage> veinImgs;
+    public static List<PImage> oreImgs;
+    public static List<PImage> quakeImgs;
+    public static List<PImage> blobImgs;
+    public static List<PImage> smithImgs;
+    public static List<PImage> minerImgs;
+    
+    public void loadImages(){
+        backgroundImgs = new ArrayList<PImage>(0);
+        obstacleImgs = new ArrayList<PImage>(0);
+        veinImgs = new ArrayList<PImage>(0);
+        oreImgs = new ArrayList<PImage>(0);
+        quakeImgs = new ArrayList<PImage>(0);
+        blobImgs = new ArrayList<PImage>(0);
+        smithImgs = new ArrayList<PImage>(0);
+        minerImgs = new ArrayList<PImage>(0);
+        
+        backgroundImgs.add(loadImage("images/grass.bmp"));
+        backgroundImgs.add(loadImage("images/rock.bmp"));
+        
+        obstacleImgs.add(loadImage("images/obstacle.bmp"));
+        
+        veinImgs.add(loadImage("images/vein.bmp"));
+        
+        oreImgs.add(loadImage("images/ore.bmp"));
+        
+        for(Integer i = 1; i <= 6; i++){
+            quakeImgs.add(loadImage("images/quake" + i.toString() + ".bmp"));
+        }
+        
+        for(Integer i = 1; i <= 12; i++){
+            blobImgs.add(loadImage("images/blob" + i.toString() + ".bmp"));
+        }
+        
+        smithImgs.add(loadImage("images/blacksmith.bmp"));
+        
+        for(Integer i = 1; i <= 5; i++){
+            minerImgs.add(loadImage("images/miner" + i.toString() + ".bmp"));
+        }
+    }
+
+    private WorldModel setupWorld(){
+        world = new WorldModel(WORLD_HEIGHT, WORLD_WIDTH);
+        return world;
+    }
 
     public void setup(){
-        Background defaultBackground = new Background("defaultBackground");
-        WorldModel world = new WorldModel((SCREEN_HEIGHT/TILE_HEIGHT)*WORLD_HEIGHT_SCALE, (SCREEN_WIDTH/TILE_WIDTH)*WORLD_WIDTH_SCALE, defaultBackground);
-        size(SCREEN_WIDTH, SCREEN_HEIGHT);
+        setupWorld();
+        loadImages();
+        size(SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX);
         background(color(255,255,255));
-        worldView = new Entity[SCREEN_HEIGHT/TILE_HEIGHT][SCREEN_WIDTH/TILE_WIDTH]
-        for(int y = 0; y < (SCREEN_HEIGHT/TILE_HEIGHT)*WORLD_HEIGHT_SCALE; y++){
-            for(int x = 0; x < (SCREEN_WIDTH/TILE_WIDTH)*WORLD_WIDTH_SCALE; x++){
-                worldView[y][x]=worldModel.get
+        SaveLoad.load(world);
+        worldView = new Entity[SCREEN_HEIGHT][SCREEN_WIDTH];
+        SCREEN_START = new Point(0,0);
+        for(int y = 0; y < (SCREEN_HEIGHT); y++){
+            for(int x = 0; x < (SCREEN_WIDTH); x++){
+                Point pt = new Point(x, WORLD_HEIGHT - y);
+                worldView[y][x]=world.getBackground(pt);
+                if(world.getTileOccupant(pt) != null){
+                    worldView[y][x] = world.getTileOccupant(pt);
+                }
                 
             }
         }
+        next_time = System.currentTimeMillis() + ANIMATION_TIME;
+    }
+    
+    public void draw(){
+        background(color(255,255,255));
+        //update worldView and draw appropriate image
+        for(int y = 0; y < SCREEN_HEIGHT; y++){
+            for(int x = 0; x < SCREEN_WIDTH; x++){
+                Point pt = new Point(x + SCREEN_START.getX(), y + SCREEN_START.getY());
+                Background bg = world.getBackground(pt);
+                if(world.getTileOccupant(pt) != null){
+                    Entity e = world.getTileOccupant(pt);
+                    worldView[y][x] = e;
+                    image(processAlpha(e, bg), x*TILE_WIDTH_PX, y*TILE_HEIGHT_PX);
+                }
+                else{
+                    worldView[y][x] = bg;
+                    image(bg.getCurrentImage(), x*TILE_WIDTH_PX, y*TILE_HEIGHT_PX);
+                }
+            }
+        }
+        //other stuff
+        Animations.AnimateAll(world);
+        Actions.doAll();
+        Actions.startVeins(world);
+    }
+    
+    public void keyPressed(){
+        switch(key){
+                case 'w':
+                    if(SCREEN_START.getY() > 0){
+                        SCREEN_START = new Point(SCREEN_START.getX(), SCREEN_START.getY() - 1);
+                    }
+                    break;
+                case 'a':
+                    if(SCREEN_START.getX() > 0){
+                        SCREEN_START = new Point(SCREEN_START.getX() - 1, SCREEN_START.getY());
+                    }
+                    break;
+                case 's':
+                    if(SCREEN_START.getY() < WORLD_HEIGHT - SCREEN_HEIGHT){
+                        SCREEN_START = new Point(SCREEN_START.getX(), SCREEN_START.getY() + 1);
+                    }
+                    break;
+                case 'd':
+                    if(SCREEN_START.getX() < WORLD_WIDTH - SCREEN_WIDTH){
+                        SCREEN_START = new Point(SCREEN_START.getX() + 1, SCREEN_START.getY());
+                    }
+                    break;
+        }
+    }
+    
+    private PImage processAlpha(Entity entity, Background bgnd){
+        PImage e = entity.getCurrentImage();
+        int maskColor = -197380;
+        e.format = RGB;
+        e.loadPixels();
+        PImage bg = bgnd.getCurrentImage();
+        bg.format = RGB;
+        bg.loadPixels();
+        PImage img = createImage(32,32, RGB);
+        img.loadPixels();
+        for(int i = 0; i < img.pixels.length; i++){
+            if (e.pixels[i] == maskColor){img.pixels[i] = bg.pixels[i];}
+            else{img.pixels[i] = e.pixels[i];}
+        }
+        img.updatePixels();
+        return img;
+    }
+    
+    public static void main(String[] args)
+    {
+        PApplet.main("ProcessWorld");
     }
 }
+
+
+
+
+
+
+
+
+
+

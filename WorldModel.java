@@ -10,11 +10,11 @@ public class WorldModel{
     private OccGrid<Background> background;
     private OccGrid<PositionedEntity> occupancy;
     private List<PositionedEntity> entities;
-    public WorldModel(int numRows, int numCols, Background bg){
+    public WorldModel(int numRows, int numCols){
         this.numRows = numRows;
         this.numCols = numCols;
         this.entities = new ArrayList<PositionedEntity>();
-        this.background = new OccGrid<Background>(numCols, numRows, bg);
+        this.background = new OccGrid<Background>(numCols, numRows, null);
         this.occupancy = new OccGrid<PositionedEntity>(numCols, numRows, null);
     }
     

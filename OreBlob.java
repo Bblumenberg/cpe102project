@@ -1,19 +1,14 @@
 import java.util.List;
+import processing.core.*;
 
 public class OreBlob extends ActionedEntity{
-    private int animationRate;
-    
-    public OreBlob(String name, Point position, int rate, int animationRate){
-        super(name, position, rate, "blob");
+    public OreBlob(String name, List<PImage> imgs, Point position, int rate, int animationRate){
+        super(name, imgs, position, rate, "blob");
         this.animationRate = animationRate;
-        for(int i = 1; i <= 12; i++){
-            imgs.add("images/blob" + i.asString() + ".bmp");
-        }
+        this.nextAnimTime = System.currentTimeMillis() + this.animationRate;
     }
     
-    public int getAnimationRate(){
-        return animationRate;
-    }
+    public int getAnimationRate(){return animationRate;}
     
     public Point blobNextPosition(WorldModel world, Point destPt){
         int horiz = Sign.compare(destPt.getX(), position.getX());

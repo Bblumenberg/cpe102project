@@ -1,11 +1,11 @@
-public abstract class Miner extends ResourceEntity{
+import processing.core.*;
+import java.util.List;
 
-    protected int animationRate;
-    public Miner(String name, int resourceLimit, Point position, int rate, int animationRate, int resourceCount){
-        super(name, position, rate, resourceLimit, resourceCount, "miner");
-        for(int i = 1; i <= 5; i++){
-            imgs.add("images/miner" + i.asString() + ".bmp");
-        }
+public abstract class Miner extends ResourceEntity{
+    public Miner(String name, List<PImage> imgs, int resourceLimit, Point position, int rate, int animationRate, int resourceCount){
+        super(name, imgs, position, rate, resourceLimit, resourceCount, "miner");
+        this.animationRate = animationRate;
+        this.nextAnimTime = System.currentTimeMillis() + this.animationRate;
     }
     
     public int getAnimationRate(){return animationRate;}

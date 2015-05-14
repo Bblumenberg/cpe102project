@@ -1,15 +1,13 @@
+import processing.core.*;
+import java.util.List;
+
 public class Quake extends ActionedEntity{
-    private int animationRate;
-    public Quake(String name, Point position, int rate, int animationRate){
-        super(name, position, rate, "quake");
+    public Quake(String name, List<PImage> imgs, Point position, int rate, int animationRate){
+        super(name, imgs, position, rate, "quake");
         this.animationRate = animationRate;
-        for(int i = 1; i <= 6; i++){
-            imgs.add("images/quake" + i.asString() + ".bmp");
-        }
+        this.nextAnimTime = System.currentTimeMillis() + this.animationRate;
     }
     
-    public int getAnimationRate(){
-        return animationRate;
-    }
+    public int getAnimationRate(){return animationRate;}
 
 }

@@ -1,9 +1,10 @@
 import java.util.List;
+import processing.core.*;
 
 public class MinerFull extends Miner{
 
-    public MinerFull(String name, int resourceLimit, Point position, int rate, int animationRate){
-        super(name, resourceLimit, position, rate, animationRate, resourceLimit);
+    public MinerFull(String name, List<PImage> imgs, int resourceLimit, Point position, int rate, int animationRate){
+        super(name, imgs, resourceLimit, position, rate, animationRate, resourceLimit);
     }
 
     public TwoTuple<List<Point>,Boolean> minerToSmith(WorldModel world, Blacksmith smith){
@@ -23,7 +24,7 @@ public class MinerFull extends Miner{
     }
     
     public Miner tryTransformMinerFull(WorldModel world){
-        Miner newMiner = new MinerNotFull(getName(), resourceLimit, position, getRate(), animationRate);
+        Miner newMiner = new MinerNotFull(getName(), imgs, resourceLimit, position, getRate(), animationRate);
         return newMiner;
     }
 }
