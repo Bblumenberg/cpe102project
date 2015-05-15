@@ -1,5 +1,6 @@
 import processing.core.*;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Vein extends ActionedEntity{
 
@@ -15,13 +16,17 @@ public class Vein extends ActionedEntity{
     }
     
     public Point findOpenAround(WorldModel world, Point pt, int distance){
+        List<Point> possiblePoints = new ArrayList<Point>(0);
         for(int dy = -distance; dy <= distance; dy++){
             for(int dx = -distance; dx <= distance; dx++){
                 Point newPoint = new Point(pt.getX() + dx, pt.getY() + dy);
                 if(world.withinBounds(newPoint) && !(world.isOccupied(newPoint))){
-                    return newPoint;
+                    possiblePoints.add(newPoint);
                 }
             }
+        }
+        if(possiblePoints.size() > 0){
+            return possiblePoints.get(RandomGen.gen(0, possiblePoints.size() -1));
         }
         return null;
     }
