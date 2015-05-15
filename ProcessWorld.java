@@ -18,7 +18,7 @@ public class ProcessWorld extends PApplet{
     private static final int WORLD_HEIGHT = SCREEN_HEIGHT * WORLD_HEIGHT_SCALE;
     private static final int WORLD_WIDTH = SCREEN_WIDTH * WORLD_WIDTH_SCALE;
     
-    public WorldModel world;
+    private static WorldModel world;
     private Entity[][] worldView;
     public Point SCREEN_START;
     
@@ -71,6 +71,8 @@ public class ProcessWorld extends PApplet{
         world = new WorldModel(WORLD_HEIGHT, WORLD_WIDTH);
         return world;
     }
+    
+    public static WorldModel getWorld(){return world;}
 
     public void setup(){
         setupWorld();

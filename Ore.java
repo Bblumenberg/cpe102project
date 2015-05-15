@@ -18,6 +18,7 @@ public class Ore extends ActionedEntity{
             public void method(Ore e, WorldModel world){
                 OreBlob blob = new OreBlob(e.getName() + " -- blob", ProcessWorld.blobImgs, e.getPosition(), e.getRate() / 4, 50*RandomGen.gen(1,3));
                 world.removeEntity(e);
+                blob.createNextAction(world);
                 world.addEntity(blob);
             }
         });
