@@ -34,16 +34,17 @@ public class ProcessWorld extends PApplet{
     public static List<PImage> minerImgs;
     
     public void loadImages(){
-        backgroundImgs = new ArrayList<PImage>(0);
-        obstacleImgs = new ArrayList<PImage>(0);
-        veinImgs = new ArrayList<PImage>(0);
-        oreImgs = new ArrayList<PImage>(0);
-        quakeImgs = new ArrayList<PImage>(0);
-        blobImgs = new ArrayList<PImage>(0);
-        smithImgs = new ArrayList<PImage>(0);
-        minerImgs = new ArrayList<PImage>(0);
+        ImageLoad masterImageLoad = new ImageLoad();
+        backgroundImgs = masterImageLoad.backgroundImgs;
+        obstacleImgs = masterImageLoad.obstacleImgs;
+        veinImgs = masterImageLoad.veinImgs;
+        oreImgs = masterImageLoad.oreImgs;
+        quakeImgs = masterImageLoad.quakeImgs;
+        blobImgs = masterImageLoad.blobImgs;
+        smithImgs = masterImageLoad.smithImgs;
+        minerImgs = masterImageLoad.minerImgs;
         
-        backgroundImgs.add(loadImage("images/grass.bmp"));
+        /*backgroundImgs.add(loadImage("images/grass.bmp"));
         backgroundImgs.add(loadImage("images/rock.bmp"));
         
         obstacleImgs.add(loadImage("images/obstacle.bmp"));
@@ -64,7 +65,7 @@ public class ProcessWorld extends PApplet{
         
         for(Integer i = 1; i <= 5; i++){
             minerImgs.add(loadImage("images/miner" + i.toString() + ".bmp"));
-        }
+        }*/
     }
 
     private WorldModel setupWorld(){
