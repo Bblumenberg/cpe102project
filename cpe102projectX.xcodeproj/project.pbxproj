@@ -30,24 +30,7 @@
 		B5887BF81AEC3C7A00867E49 /* Vein.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = Vein.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B5887BF91AEC3E7C00867E49 /* WorldModel.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = WorldModel.java; sourceTree = "<group>"; };
 		B5887BFA1AEC3F0600867E49 /* OccGrid.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = OccGrid.java; sourceTree = "<group>"; };
-		B5B89DEF1AD3AAAA004BB646 /* actions.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; lineEnding = 0; path = actions.py; sourceTree = "<group>"; tabWidth = 3; xcLanguageSpecificationIdentifier = xcode.lang.python; };
-		B5B89DF11AD3AAAA004BB646 /* builder_controller.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; lineEnding = 0; path = builder_controller.py; sourceTree = "<group>"; tabWidth = 3; xcLanguageSpecificationIdentifier = xcode.lang.python; };
-		B5B89DF21AD3AAAA004BB646 /* builder.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = builder.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89DF31AD3AAAA004BB646 /* controller.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = controller.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89DF51AD3AAAA004BB646 /* DESIGN */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text; lineEnding = 0; path = DESIGN; sourceTree = "<group>"; tabWidth = 3; xcLanguageSpecificationIdentifier = "<none>"; };
-		B5B89DF61AD3AAAA004BB646 /* entities.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; indentWidth = 3; lineEnding = 0; path = entities.py; sourceTree = "<group>"; tabWidth = 3; usesTabs = 0; };
 		B5B89DF81AD3AAAA004BB646 /* gaia.sav */ = {isa = PBXFileReference; lastKnownFileType = text; path = gaia.sav; sourceTree = "<group>"; };
-		B5B89DF91AD3AAAA004BB646 /* image_store.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = image_store.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89DFB1AD3AAAA004BB646 /* imagelist */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text; path = imagelist; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E271AD3AAAA004BB646 /* keys.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = keys.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E281AD3AAAA004BB646 /* main.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E291AD3AAAA004BB646 /* mouse_buttons.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = mouse_buttons.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E2A1AD3AAAA004BB646 /* occ_grid.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = occ_grid.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E2C1AD3AAAA004BB646 /* ordered_list.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = ordered_list.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E2E1AD3AAAA004BB646 /* point.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = point.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E301AD3AAAA004BB646 /* save_load.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = save_load.py; sourceTree = "<group>"; tabWidth = 3; };
-		B5B89E321AD3AAAA004BB646 /* worldmodel.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; lineEnding = 0; path = worldmodel.py; sourceTree = "<group>"; tabWidth = 3; xcLanguageSpecificationIdentifier = xcode.lang.python; };
-		B5B89E341AD3AAAA004BB646 /* worldview.py */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.python; path = worldview.py; sourceTree = "<group>"; tabWidth = 3; };
 		B5FB20711B01B7F90037B087 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		B5FB20721B03D32E0037B087 /* Animations.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Animations.java; sourceTree = "<group>"; };
 		B5FB20751B044C7A0037B087 /* Actions.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Actions.java; sourceTree = "<group>"; };
@@ -88,24 +71,7 @@
 				B5FB20771B0466D60037B087 /* Action.java */,
 				B5FB20721B03D32E0037B087 /* Animations.java */,
 				B577B3121B0049E40010FD54 /* SaveLoad.java */,
-				B5B89E301AD3AAAA004BB646 /* save_load.py */,
-				B5B89DEF1AD3AAAA004BB646 /* actions.py */,
-				B5B89DF11AD3AAAA004BB646 /* builder_controller.py */,
-				B5B89DF21AD3AAAA004BB646 /* builder.py */,
-				B5B89DF31AD3AAAA004BB646 /* controller.py */,
-				B5B89DF51AD3AAAA004BB646 /* DESIGN */,
-				B5B89DF61AD3AAAA004BB646 /* entities.py */,
-				B5B89DF91AD3AAAA004BB646 /* image_store.py */,
 				B5B89DF81AD3AAAA004BB646 /* gaia.sav */,
-				B5B89DFB1AD3AAAA004BB646 /* imagelist */,
-				B5B89E271AD3AAAA004BB646 /* keys.py */,
-				B5B89E281AD3AAAA004BB646 /* main.py */,
-				B5B89E291AD3AAAA004BB646 /* mouse_buttons.py */,
-				B5B89E2A1AD3AAAA004BB646 /* occ_grid.py */,
-				B5B89E2C1AD3AAAA004BB646 /* ordered_list.py */,
-				B5B89E2E1AD3AAAA004BB646 /* point.py */,
-				B5B89E321AD3AAAA004BB646 /* worldmodel.py */,
-				B5B89E341AD3AAAA004BB646 /* worldview.py */,
 				B5FB20711B01B7F90037B087 /* images */,
 			);
 			sourceTree = "<group>";
