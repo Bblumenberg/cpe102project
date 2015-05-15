@@ -114,7 +114,7 @@ public class ProcessWorld extends PApplet{
         //other stuff
         Animations.AnimateAll(world);
         Actions.doAll();
-        Actions.startVeins(world);
+        Actions.startActions(world);
     }
     
     public void keyPressed(){
@@ -144,7 +144,7 @@ public class ProcessWorld extends PApplet{
     
     private PImage processAlpha(Entity entity, Background bgnd){
         PImage e = entity.getCurrentImage();
-        int maskColor = -197380;
+        EasyList<Integer> maskColors = new EasyList<Integer>(-197380);
         e.format = RGB;
         e.loadPixels();
         PImage bg = bgnd.getCurrentImage();
@@ -153,7 +153,7 @@ public class ProcessWorld extends PApplet{
         PImage img = createImage(32,32, RGB);
         img.loadPixels();
         for(int i = 0; i < img.pixels.length; i++){
-            if (e.pixels[i] == maskColor){img.pixels[i] = bg.pixels[i];}
+            if (maskColors.contains(e.pixels[i])){img.pixels[i] = bg.pixels[i];}
             else{img.pixels[i] = e.pixels[i];}
         }
         img.updatePixels();

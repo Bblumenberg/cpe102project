@@ -30,4 +30,6 @@ public class MinerNotFull extends Miner{
             return newMiner;
         }
     }
+    
+    public void createNextAction(WorldModel world){;}
 }

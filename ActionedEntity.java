@@ -12,4 +12,6 @@ public abstract class ActionedEntity extends PositionedEntity{
     public int getRate(){
         return this.rate;
     }
+    
+    public abstract void createNextAction(WorldModel world);
 }

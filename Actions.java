@@ -6,7 +6,7 @@ public class Actions{
     private static List<ScheduledAction> pendingAddition = new LinkedList();
     private static List<ScheduledAction> actions = new LinkedList();
     private static List<ScheduledAction> pendingRemoval = new LinkedList();
-    public static boolean veins;
+    public static boolean started;
     
     public static void doAll(){
         for(ScheduledAction action: pendingAddition){actions.add(action);}
@@ -23,16 +23,17 @@ public class Actions{
     
     public static void addAction(ScheduledAction action){pendingAddition.add(action);}
     
-    public static void startVeins(WorldModel world){
-        if(!veins){
-            for(int i = 0; i < world.getEntities().size(); i++){
-                PositionedEntity e = world.getEntities().get(i);
-                if(e.getClass() == Vein.class){
-                    Vein vein = (Vein) e;
-                    vein.createNextAction(world);
+    public static void startActions(WorldModel world){
+        if(!started){
+            for(PositionedEntity e : world.getEntities()){
+                if(e instanceof ActionedEntity){
+                    if(e instanceof Vein){
+                        Vein vein = (Vein) e;
+                        vein.createNextAction(world);
+                    }
                 }
             }
-            veins = true;
+            started = true;
         }
     }
 }

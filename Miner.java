@@ -22,4 +22,6 @@ public abstract class Miner extends ResourceEntity{
         }
         return newPt;
     }
+    
+    public void createNextAction(WorldModel world){;}
 }

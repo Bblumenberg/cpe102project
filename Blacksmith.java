@@ -15,4 +15,6 @@ public class Blacksmith extends ResourceEntity{
     }
     
     public int getAnimationRate(){return 0;}
+    
+    public void createNextAction(WorldModel world){;}
 }

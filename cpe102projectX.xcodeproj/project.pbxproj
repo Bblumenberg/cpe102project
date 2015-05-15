@@ -54,6 +54,7 @@
 		B5FB20751B044C7A0037B087 /* Actions.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Actions.java; sourceTree = "<group>"; };
 		B5FB20761B04664D0037B087 /* ScheduledAction.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = ScheduledAction.java; sourceTree = "<group>"; };
 		B5FB20771B0466D60037B087 /* Action.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Action.java; sourceTree = "<group>"; };
+		B5FB20781B056E9B0037B087 /* RandomGen.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = RandomGen.java; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -82,6 +83,7 @@
 				B5059C221AF80B440043B1B3 /* MinerNotFull.java */,
 				B5059C231AF811350043B1B3 /* MinerFull.java */,
 				B5887BF31AEB670400867E49 /* TestCases.java */,
+				B5FB20781B056E9B0037B087 /* RandomGen.java */,
 				B57A147C1AFD41C100EC9FA8 /* ProcessWorld.java */,
 				B5FB20751B044C7A0037B087 /* Actions.java */,
 				B5FB20761B04664D0037B087 /* ScheduledAction.java */,

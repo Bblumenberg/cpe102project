@@ -9,5 +9,7 @@ public class Quake extends ActionedEntity{
     }
     
     public int getAnimationRate(){return animationRate;}
+    
+    public void createNextAction(WorldModel world){;}
 
 }

@@ -41,4 +41,6 @@ public class OreBlob extends ActionedEntity{
             return new TwoTuple<List<Point>,Boolean>(world.moveEntity(this, newPt), false);
         }
     }
+    
+    public void createNextAction(WorldModel world){;}
 }

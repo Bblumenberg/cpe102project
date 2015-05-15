@@ -31,8 +31,9 @@ public class Vein extends ActionedEntity{
             public void method(Vein e, WorldModel world){
                 Point openPt = e.findOpenAround(world, position, resourceDistance);
                 if(openPt != null){
-                    Ore ore = new Ore("ore - " + getName() + " - " + System.currentTimeMillis(), ProcessWorld.oreImgs, openPt);
+                    Ore ore = new Ore("ore - " + e.getName() + " - " + System.currentTimeMillis(), ProcessWorld.oreImgs, openPt, RandomGen.gen(20000, 30000));
                     world.addEntity(ore);
+                    ore.createNextAction(world);
                 }
                 e.createNextAction(world);
             }
