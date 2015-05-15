@@ -31,6 +31,10 @@ public class Actions{
                         Vein vein = (Vein) e;
                         vein.createNextAction(world);
                     }
+                    if(e instanceof MinerNotFull){
+                        MinerNotFull miner = (MinerNotFull) e;
+                        miner.createNextAction(world);
+                    }
                 }
             }
             started = true;

@@ -12,12 +12,13 @@ public class Quake extends ActionedEntity{
     public int getAnimationRate(){return animationRate;}
     
     public void createNextAction(WorldModel world){
-        ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<Quake>(){
-            public void method(Quake e, WorldModel world){
-                world.removeEntity(e);
-            }
-        });
-        Actions.addAction(myAction);
-
+        if(world.withinBounds(this.getPosition())){
+            ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<Quake>(){
+                public void method(Quake e, WorldModel world){
+                    world.removeEntity(e);
+                }
+            });
+            Actions.addAction(myAction);
+        }
     }
 }

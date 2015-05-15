@@ -7,23 +7,24 @@ public class MinerNotFull extends Miner{
         super(name, imgs, resourceLimit, position, rate, animationRate, 0);
     }
     
-    public TwoTuple<List<Point>,Boolean> minerToOre(WorldModel world, PositionedEntity ore){
+    public boolean minerToOre(WorldModel world, PositionedEntity ore){
         if(ore == null){
-            return new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(position), false);
+            return false;
         }
         Point orePt = ore.getPosition();
         if(position.adjacent(orePt)){
             this.resourceCount += 1;
             world.removeEntity(ore);
-            return new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(orePt), true);
+            return true;
         }
         else{
             Point newPt = nextPosition(world, orePt);
-            return new TwoTuple<List<Point>,Boolean>(world.moveEntity(this, newPt), false);
+            world.moveEntity(this, newPt);
+            return false;
         }
     }
     
-    public Miner tryTransformMinerNotFull(WorldModel world){
+    public Miner tryTransformMinerNotFull(){
         if(resourceCount < resourceLimit){return this;}
         else{
             Miner newMiner = new MinerFull(getName(), imgs, resourceLimit, position, getRate(), animationRate);
@@ -31,5 +32,25 @@ public class MinerNotFull extends Miner{
         }
     }
     
-    public void createNextAction(WorldModel world){;}
+    public void createNextAction(WorldModel world){
+        if(world.withinBounds(this.getPosition())){
+            ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<MinerNotFull>(){
+                public void method(MinerNotFull e, WorldModel world){
+                    Ore ore = (Ore) world.findNearest(e.getPosition(), Ore.class);
+                    boolean found = e.minerToOre(world, ore);
+                    if(found){
+                        Miner newEntity = e.tryTransformMinerNotFull();
+                        if(newEntity != e){
+                            world.removeEntity(e);
+                            world.addEntity(newEntity);
+                            newEntity.createNextAction(world);
+                        }
+                        else{e.createNextAction(world);}
+                    }
+                    else{e.createNextAction(world);}
+                }
+            });
+            Actions.addAction(myAction);
+        }
+    }
 }

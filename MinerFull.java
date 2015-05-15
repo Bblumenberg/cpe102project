@@ -7,24 +7,48 @@ public class MinerFull extends Miner{
         super(name, imgs, resourceLimit, position, rate, animationRate, resourceLimit);
     }
 
-    public TwoTuple<List<Point>,Boolean> minerToSmith(WorldModel world, Blacksmith smith){
+    public boolean minerToSmith(WorldModel world, Blacksmith smith){
         if(smith == null){
-            return new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(position), false);
+            return false;
         }
         Point smithPt = smith.getPosition();
         if(position.adjacent(smithPt)){
             smith.setResourceCount(smith.getResourceCount() + resourceCount);
             resourceCount = 0;
-            return new TwoTuple<List<Point>,Boolean>(new EasyList<Point>(), true);
+            return true;
         }
         else{
             Point newPt = nextPosition(world, smithPt);
-            return new TwoTuple<List<Point>,Boolean>(world.moveEntity(this, newPt), false);
+            world.moveEntity(this, newPt);
+            return false;
         }
     }
     
-    public Miner tryTransformMinerFull(WorldModel world){
+    public Miner tryTransformMinerFull(){
         Miner newMiner = new MinerNotFull(getName(), imgs, resourceLimit, position, getRate(), animationRate);
         return newMiner;
     }
+    
+    public void createNextAction(WorldModel world){
+        if(world.withinBounds(this.getPosition())){
+            ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<MinerFull>(){
+                public void method(MinerFull e, WorldModel world){
+                    Blacksmith smith = (Blacksmith) world.findNearest(e.getPosition(), Blacksmith.class);
+                    boolean found = e.minerToSmith(world, smith);
+                    if(found){
+                        Miner newEntity = e.tryTransformMinerFull();
+                        if(newEntity != e){
+                            world.removeEntity(e);
+                            world.addEntity(newEntity);
+                            newEntity.createNextAction(world);
+                        }
+                        else{e.createNextAction(world);}
+                    }
+                    else{e.createNextAction(world);}
+                }
+            });
+            Actions.addAction(myAction);
+        }
+    }
+
 }

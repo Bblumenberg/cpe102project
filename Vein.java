@@ -27,18 +27,21 @@ public class Vein extends ActionedEntity{
     }
     
     public void createNextAction(WorldModel world){
-        ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<Vein>(){
-            public void method(Vein e, WorldModel world){
-                Point openPt = e.findOpenAround(world, position, resourceDistance);
-                if(openPt != null){
-                    Ore ore = new Ore("ore - " + e.getName() + " - " + System.currentTimeMillis(), ProcessWorld.oreImgs, openPt, RandomGen.gen(20000, 30000));
-                    world.addEntity(ore);
-                    ore.createNextAction(world);
+        if(world.withinBounds(this.getPosition())){
+            ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<Vein>(){
+                public void method(Vein e, WorldModel world){
+                    if(!world.withinBounds(e.getPosition())){return;}
+                    Point openPt = e.findOpenAround(world, position, resourceDistance);
+                    if(openPt != null){
+                        Ore ore = new Ore("ore - " + e.getName() + " - " + System.currentTimeMillis(), ProcessWorld.oreImgs, openPt, RandomGen.gen(20000, 30000));
+                        world.addEntity(ore);
+                        ore.createNextAction(world);
+                    }
+                    e.createNextAction(world);
                 }
-                e.createNextAction(world);
-            }
-        });
-        Actions.addAction(myAction);
+            });
+            Actions.addAction(myAction);
+        }
     }
     
     public int getAnimationRate(){return 0;}

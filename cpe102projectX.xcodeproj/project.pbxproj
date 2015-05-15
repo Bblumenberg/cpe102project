@@ -23,7 +23,6 @@
 		B57A147C1AFD41C100EC9FA8 /* ProcessWorld.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = ProcessWorld.java; sourceTree = "<group>"; };
 		B5887BF01AEB5BAB00867E49 /* Entity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Entity.java; sourceTree = "<group>"; };
 		B5887BF11AEB62F900867E49 /* Point.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Point.java; sourceTree = "<group>"; };
-		B5887BF31AEB670400867E49 /* TestCases.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = TestCases.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B5887BF41AEB6D6600867E49 /* Background.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Background.java; sourceTree = "<group>"; };
 		B5887BF51AEB6D9000867E49 /* PositionedEntity.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = PositionedEntity.java; sourceTree = "<group>"; };
 		B5887BF61AEB6DB400867E49 /* Obstacle.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Obstacle.java; sourceTree = "<group>"; };
@@ -82,7 +81,6 @@
 				B5059C211AF808A90043B1B3 /* Miner.java */,
 				B5059C221AF80B440043B1B3 /* MinerNotFull.java */,
 				B5059C231AF811350043B1B3 /* MinerFull.java */,
-				B5887BF31AEB670400867E49 /* TestCases.java */,
 				B5FB20781B056E9B0037B087 /* RandomGen.java */,
 				B57A147C1AFD41C100EC9FA8 /* ProcessWorld.java */,
 				B5FB20751B044C7A0037B087 /* Actions.java */,

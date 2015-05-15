@@ -44,20 +44,22 @@ public class OreBlob extends ActionedEntity{
     }
     
     public void createNextAction(WorldModel world){
-        ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<OreBlob>(){
-            public void method(OreBlob e, WorldModel world){
-                Vein vein = (Vein) world.findNearest(e.getPosition(), Vein.class);
-                Point veinPt;
-                if(vein != null){veinPt = vein.getPosition();}
-                else{veinPt = new Point(-1, -1);}
-                boolean found = e.blobToVein(world, vein);
-                if(found){
-                    Quake quake = new Quake("quake", ProcessWorld.quakeImgs, veinPt, 100);
-                    world.addEntity(quake);
+        if(world.withinBounds(this.getPosition())){
+            ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<OreBlob>(){
+                public void method(OreBlob e, WorldModel world){
+                    Vein vein = (Vein) world.findNearest(e.getPosition(), Vein.class);
+                    Point veinPt;
+                    if(vein != null){veinPt = vein.getPosition();}
+                    else{veinPt = new Point(-1, -1);}
+                    boolean found = e.blobToVein(world, vein);
+                    if(found){
+                        Quake quake = new Quake("quake", ProcessWorld.quakeImgs, veinPt, 100);
+                        world.addEntity(quake);
+                    }
+                    e.createNextAction(world);
                 }
-                e.createNextAction(world);
-            }
-        });
-        Actions.addAction(myAction);
+            });
+            Actions.addAction(myAction);
+        }
     }
 }
