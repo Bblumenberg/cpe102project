@@ -144,6 +144,9 @@ public class ProcessWorld extends PApplet{
         if(e instanceof Miner){
             Miner miner = (Miner) e;
             this.searchOverlay = miner.getOverlay();
+        }else if(e instanceof OreBlob){
+            OreBlob blob = (OreBlob) e;
+            this.searchOverlay = blob.getOverlay();
         }
     }
     

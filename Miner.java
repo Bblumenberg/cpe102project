@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public abstract class Miner extends ResourceEntity{
-    public List<Point> searched;
     private AStarPather pather;
     private OccGrid<Integer> searchOverlay;
     public Miner(String name, List<PImage> imgs, int resourceLimit, Point position, int rate, int animationRate, int resourceCount){
@@ -35,7 +34,7 @@ public abstract class Miner extends ResourceEntity{
     public Point nextPosition(WorldModel world, Point destPt){
         searchOverlay = new OccGrid<Integer>(ProcessWorld.WORLD_WIDTH, ProcessWorld.WORLD_HEIGHT, 0);
         pather = new AStarPather(this.getPosition(), destPt);
-        return pather.search(world, searchOverlay, this);
+        return pather.search(world, searchOverlay);
     }
     
 /*    public Point nextPosition(WorldModel world, Point destPt){

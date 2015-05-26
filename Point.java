@@ -47,7 +47,11 @@ public class Point{
         return Math.abs(xdiff + ydiff);
     }
     
-    public boolean equals(Point that){
-        return (x == that.getX()) && (y == that.getY());
+    public boolean equals(Object tha){
+        if(tha instanceof Point){
+            Point that = (Point) tha;
+            return (x == that.getX()) && (y == that.getY());
+        }
+        else{return false;}
     }
 }

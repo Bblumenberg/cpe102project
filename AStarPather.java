@@ -61,7 +61,7 @@ public class AStarPather{
         comp = (Node one, Node two) -> {return (one.g + one.h) - (two.g + two.h);};
     }
     
-    public Point search(WorldModel world, OccGrid<Integer> grid, Miner m){
+    public Point search(WorldModel world, OccGrid<Integer> grid){
         while(openSet.size() > 0 && count < 1200){
             grid.setCell(targetPt, 3);
             count += 1;
@@ -92,8 +92,9 @@ public class AStarPather{
                                     //these nodes are in the same place; have the same h-value
                                     if(neighbor.g < node.g){
                                         //neighbor has a quicker route than the original
-                                        openSet.removeNode(node);
-                                        openSet.addNode(neighbor);
+                                        node.previous = neighbor.previous;
+                                        node.g = neighbor.g;
+                                        node.h = neighbor.h;
                                     }
                                 }
                             }
