@@ -9,6 +9,7 @@ public class ImageLoad extends PApplet{
     private Scanner imagefile;
     
     public List<PImage> backgroundImgs;
+    public List<PImage> overlayImgs;
     public List<PImage> obstacleImgs;
     public List<PImage> veinImgs;
     public List<PImage> oreImgs;
@@ -27,6 +28,7 @@ public class ImageLoad extends PApplet{
         }
         
         backgroundImgs = new ArrayList<PImage>(2);
+        overlayImgs = new ArrayList<PImage>(3);
         obstacleImgs = new ArrayList<PImage>(0);
         veinImgs = new ArrayList<PImage>(0);
         oreImgs = new ArrayList<PImage>(0);
@@ -43,6 +45,15 @@ public class ImageLoad extends PApplet{
                 }
                 else if(info[0].equals("rocks")){
                     backgroundImgs.add(1, loadImage(info[1]));
+                }
+                else if(info[0].equals("black")){
+                    overlayImgs.add(0, loadImage(info[1]));
+                }
+                else if(info[0].equals("red")){
+                    overlayImgs.add(1, loadImage(info[1]));
+                }
+                else if(info[0].equals("blue")){
+                    overlayImgs.add(2, loadImage(info[1]));
                 }
                 else if(info[0].equals("obstacle")){
                     obstacleImgs.add(loadImage(info[1]));

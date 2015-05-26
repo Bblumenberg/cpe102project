@@ -12,6 +12,8 @@
 		B5059C231AF811350043B1B3 /* MinerFull.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = MinerFull.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B5059C241AF8733E0043B1B3 /* EntInt.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = EntInt.java; sourceTree = "<group>"; };
 		B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = TwoTuple.java; sourceTree = "<group>"; };
+		B510A2071B13EAC300A61185 /* AStarPather.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = AStarPather.java; sourceTree = "<group>"; };
+		B510A2081B13FECB00A61185 /* DFSPather.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = DFSPather.java; sourceTree = "<group>"; };
 		B557AEDF1AF840D30049BC4D /* EasyList.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = EasyList.java; sourceTree = "<group>"; };
 		B570770E1AF44EDD00E63066 /* Ore.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = Ore.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B570770F1AF44FF900E63066 /* OreBlob.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = OreBlob.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
@@ -50,6 +52,8 @@
 				B557AEDF1AF840D30049BC4D /* EasyList.java */,
 				B57077101AF452CA00E63066 /* Sign.java */,
 				B5887BF11AEB62F900867E49 /* Point.java */,
+				B510A2071B13EAC300A61185 /* AStarPather.java */,
+				B510A2081B13FECB00A61185 /* DFSPather.java */,
 				B5887BF91AEC3E7C00867E49 /* WorldModel.java */,
 				B5887BFA1AEC3F0600867E49 /* OccGrid.java */,
 				B5887BF01AEB5BAB00867E49 /* Entity.java */,

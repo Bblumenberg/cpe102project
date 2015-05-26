@@ -25,6 +25,8 @@ public class WorldModel{
     public boolean isOccupied(Point pt){
         return (this.withinBounds(pt) && this.occupancy.getCell(pt) != null);
     }
+    
+    public boolean openTile(Point pt){return withinBounds(pt) && !isOccupied(pt);}
 
     public PositionedEntity findNearest(Point pt, Class type){
         List<EntInt> oftype = new ArrayList<EntInt>(this.entities.size());

@@ -15,16 +15,19 @@ public class ProcessWorld extends PApplet{
     private static final int TILE_HEIGHT_PX = 32;
     private static final int SCREEN_HEIGHT = SCREEN_HEIGHT_PX/TILE_HEIGHT_PX;
     private static final int SCREEN_WIDTH = SCREEN_WIDTH_PX/TILE_WIDTH_PX;
-    private static final int WORLD_HEIGHT = SCREEN_HEIGHT * WORLD_HEIGHT_SCALE;
-    private static final int WORLD_WIDTH = SCREEN_WIDTH * WORLD_WIDTH_SCALE;
+    public static final int WORLD_HEIGHT = SCREEN_HEIGHT * WORLD_HEIGHT_SCALE;
+    public static final int WORLD_WIDTH = SCREEN_WIDTH * WORLD_WIDTH_SCALE;
     
     private static WorldModel world;
     private Entity[][] worldView;
     public Point SCREEN_START;
     
+    private OccGrid<Integer> searchOverlay;
+    
     private long next_time;
     
     public static List<PImage> backgroundImgs;
+    public static List<PImage> overlayImgs;
     public static List<PImage> obstacleImgs;
     public static List<PImage> veinImgs;
     public static List<PImage> oreImgs;
@@ -36,6 +39,7 @@ public class ProcessWorld extends PApplet{
     public void loadImages(){
         ImageLoad masterImageLoad = new ImageLoad();
         backgroundImgs = masterImageLoad.backgroundImgs;
+        overlayImgs = masterImageLoad.overlayImgs;
         obstacleImgs = masterImageLoad.obstacleImgs;
         veinImgs = masterImageLoad.veinImgs;
         oreImgs = masterImageLoad.oreImgs;
@@ -43,29 +47,6 @@ public class ProcessWorld extends PApplet{
         blobImgs = masterImageLoad.blobImgs;
         smithImgs = masterImageLoad.smithImgs;
         minerImgs = masterImageLoad.minerImgs;
-        
-        /*backgroundImgs.add(loadImage("images/grass.bmp"));
-        backgroundImgs.add(loadImage("images/rock.bmp"));
-        
-        obstacleImgs.add(loadImage("images/obstacle.bmp"));
-        
-        veinImgs.add(loadImage("images/vein.bmp"));
-        
-        oreImgs.add(loadImage("images/ore.bmp"));
-        
-        for(Integer i = 1; i <= 6; i++){
-            quakeImgs.add(loadImage("images/quake" + i.toString() + ".bmp"));
-        }
-        
-        for(Integer i = 1; i <= 12; i++){
-            blobImgs.add(loadImage("images/blob" + i.toString() + ".bmp"));
-        }
-        
-        smithImgs.add(loadImage("images/blacksmith.bmp"));
-        
-        for(Integer i = 1; i <= 5; i++){
-            minerImgs.add(loadImage("images/miner" + i.toString() + ".bmp"));
-        }*/
     }
 
     private WorldModel setupWorld(){
@@ -78,6 +59,7 @@ public class ProcessWorld extends PApplet{
     public void setup(){
         setupWorld();
         loadImages();
+        searchOverlay = new OccGrid<Integer>(WORLD_WIDTH, WORLD_HEIGHT, 0);
         size(SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX);
         background(color(255,255,255));
         SaveLoad.load(world);
@@ -98,15 +80,25 @@ public class ProcessWorld extends PApplet{
     
     public void draw(){
         background(color(255,255,255));
+        updateMouse();
         //update worldView and draw appropriate image
         for(int y = 0; y < SCREEN_HEIGHT; y++){
             for(int x = 0; x < SCREEN_WIDTH; x++){
                 Point pt = new Point(x + SCREEN_START.getX(), y + SCREEN_START.getY());
                 Background bg = world.getBackground(pt);
-                if(world.getTileOccupant(pt) != null){
+                if(searchOverlay.getCell(pt) == 3){
+                    image(overlayImgs.get(2), x*TILE_WIDTH_PX, y*TILE_HEIGHT_PX);
+                }
+                else if(world.getTileOccupant(pt) != null){
                     Entity e = world.getTileOccupant(pt);
                     worldView[y][x] = e;
                     image(processAlpha(e, bg), x*TILE_WIDTH_PX, y*TILE_HEIGHT_PX);
+                }
+                else if(searchOverlay.getCell(pt) == 2){
+                    image(overlayImgs.get(1), x*TILE_WIDTH_PX, y*TILE_HEIGHT_PX);
+                }
+                else if(searchOverlay.getCell(pt) == 1){
+                    image(overlayImgs.get(0), x*TILE_WIDTH_PX, y*TILE_HEIGHT_PX);
                 }
                 else{
                     worldView[y][x] = bg;
@@ -142,6 +134,16 @@ public class ProcessWorld extends PApplet{
                         SCREEN_START = new Point(SCREEN_START.getX() + 1, SCREEN_START.getY());
                     }
                     break;
+        }
+    }
+    
+    public void updateMouse(){
+        searchOverlay = new OccGrid<Integer>(WORLD_WIDTH, WORLD_HEIGHT, 0);
+        Point pt = new Point((mouseX/TILE_WIDTH_PX) + SCREEN_START.getX(), (mouseY/TILE_HEIGHT_PX) + SCREEN_START.getY());
+        Entity e = world.getTileOccupant(pt);
+        if(e instanceof Miner){
+            Miner miner = (Miner) e;
+            this.searchOverlay = miner.getOverlay();
         }
     }
     
