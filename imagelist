@@ -31,3 +31,20 @@ quake images/quake6.bmp 255 255 255 0
 rocks images/rock.bmp
 vein images/vein.bmp
 background_default images/none.bmp
+magicVein images/magicVein.bmp
+magicBackground images/altGrass1.bmp
+magicBackground images/altGrass2.bmp
+magicBackground images/altGrass3.bmp
+magicBackground images/altGrass4.bmp
+magicBlob images/altBlob1.bmp 255 255 255 0
+magicBlob images/altBlob2.bmp 255 255 255 0
+magicBlob images/altBlob3.bmp 255 255 255 0
+magicBlob images/altBlob4.bmp 255 255 255 0
+magicBlob images/altBlob5.bmp 255 255 255 0
+magicBlob images/altBlob6.bmp 255 255 255 0
+magicBlob images/altBlob7.bmp 255 255 255 0
+magicBlob images/altBlob8.bmp 255 255 255 0
+magicBlob images/altBlob9.bmp 255 255 255 0
+magicBlob images/altBlob10.bmp 255 255 255 0
+magicBlob images/altBlob11.bmp 255 255 255 0
+magicBlob images/altBlob12.bmp 255 255 255 0

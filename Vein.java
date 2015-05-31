@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Vein extends ActionedEntity{
 
-    private int resourceDistance;
+    protected int resourceDistance;
     public Vein(String name, List<PImage> imgs, int rate, Point position, int resourceDistance){
         super(name, imgs, position, rate, "vein");
         this.resourceDistance = resourceDistance;

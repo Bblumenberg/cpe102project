@@ -1,5 +1,6 @@
 import java.util.List;
 import processing.core.*;
+import java.util.List;
 
 public class OreBlob extends ActionedEntity{
     private AStarPather pather;
@@ -31,7 +32,7 @@ public class OreBlob extends ActionedEntity{
     public Point blobNextPosition(WorldModel world, Point destPt){
         searchOverlay = new OccGrid<Integer>(ProcessWorld.WORLD_WIDTH, ProcessWorld.WORLD_HEIGHT, 0);
         pather = new AStarPather(this.getPosition(), destPt);
-        return pather.search(world, searchOverlay);
+        return pather.search(world, searchOverlay, true);
     }
     
     public boolean blobToVein(WorldModel world, Vein vein){
@@ -46,12 +47,23 @@ public class OreBlob extends ActionedEntity{
         else{
             Point newPt = blobNextPosition(world, veinPt);
             PositionedEntity oldEntity = world.getTileOccupant(newPt);
-            if(oldEntity instanceof Ore){
+            if(Ore.class.isInstance(oldEntity)){
                 world.removeEntity(oldEntity);
+                Ore oldOre = (Ore) oldEntity;
+                if(oldOre.isMagic()){
+                    transform(world);
+                }
             }
             world.moveEntity(this, newPt);
             return false;
         }
+    }
+    
+    public void transform(WorldModel world){
+        OreBlob newBlob = new MagicBlob(getName(), ProcessWorld.magicBlobImgs, getPosition(), getRate(), getAnimationRate());
+        world.removeEntity(this);
+        world.addEntity(newBlob);
+        newBlob.createNextAction(world);
     }
     
     public void createNextAction(WorldModel world){

@@ -2,7 +2,7 @@ public class Animations{
 
     public static void AnimateAll(WorldModel world){
         for(PositionedEntity e : world.getEntities()){
-            if(e.getClass() == MinerNotFull.class || e.getClass() == MinerFull.class || e.getClass() == OreBlob.class || e.getClass() == Quake.class){
+            if(Miner.class.isInstance(e) || OreBlob.class.isInstance(e) || Quake.class.isInstance(e)){
                 if(e.nextAnimTime <= System.currentTimeMillis()){
                     e.currentImg = (e.currentImg + 1) % e.imgs.size();
                     e.nextAnimTime = System.currentTimeMillis() + e.getAnimationRate();

@@ -61,7 +61,7 @@ public class AStarPather{
         comp = (Node one, Node two) -> {return (one.g + one.h) - (two.g + two.h);};
     }
     
-    public Point search(WorldModel world, OccGrid<Integer> grid){
+    public Point search(WorldModel world, OccGrid<Integer> grid, boolean canComsumeOre){
         while(openSet.size() > 0 && count < 1200){
             grid.setCell(targetPt, 3);
             count += 1;
@@ -75,7 +75,7 @@ public class AStarPather{
                 closedSet.addNode(current);
                 grid.setCell(current.pt, 1);
                 //for every point next to the current one:
-                for(Point neighborPt : current.pt.openAdjacencyList(world)){
+                for(Point neighborPt : current.pt.openAdjacencyList(world, canComsumeOre)){
                     Node neighbor = new Node(current, neighborPt, current.g + 1, neighborPt.manhatten(targetPt));
                     //have we searched it yet?
                     if(closedSet.containsPoint(neighbor.pt)){continue;}

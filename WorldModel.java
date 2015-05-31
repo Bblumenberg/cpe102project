@@ -29,10 +29,10 @@ public class WorldModel{
     public boolean openTile(Point pt){return withinBounds(pt) && !isOccupied(pt);}
 
     public PositionedEntity findNearest(Point pt, Class type){
-        List<EntInt> oftype = new ArrayList<EntInt>(this.entities.size());
+        List<EntInt> oftype = new ArrayList<EntInt>(0);
         int i = 0;
         for(PositionedEntity e : this.entities){
-            if(e.getClass() == type){
+            if(type.isInstance(e)){
                 oftype.add(new EntInt(e, pt.distanceSq(e.getPosition())));
             }
         }
@@ -59,10 +59,6 @@ public class WorldModel{
     public void addEntity(PositionedEntity entity){
         Point pt = entity.getPosition();
         if(this.withinBounds(pt)){
-/*            PositionedEntity oldEntity = this.occupancy.getCell(pt);
-            if(oldEntity != null){
-                oldEntity.clearPendingActions();
-            }*/
             this.occupancy.setCell(pt, entity);
             this.entities.add(entity);
         }

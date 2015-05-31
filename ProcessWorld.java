@@ -23,6 +23,8 @@ public class ProcessWorld extends PApplet{
     public Point SCREEN_START;
     
     private OccGrid<Integer> searchOverlay;
+    private Point curMousePt;
+    private int magicCount;
     
     private long next_time;
     
@@ -30,9 +32,11 @@ public class ProcessWorld extends PApplet{
     public static List<PImage> overlayImgs;
     public static List<PImage> obstacleImgs;
     public static List<PImage> veinImgs;
+    public static List<PImage> magicVeinImgs;
     public static List<PImage> oreImgs;
     public static List<PImage> quakeImgs;
     public static List<PImage> blobImgs;
+    public static List<PImage> magicBlobImgs;
     public static List<PImage> smithImgs;
     public static List<PImage> minerImgs;
     
@@ -42,9 +46,11 @@ public class ProcessWorld extends PApplet{
         overlayImgs = masterImageLoad.overlayImgs;
         obstacleImgs = masterImageLoad.obstacleImgs;
         veinImgs = masterImageLoad.veinImgs;
+        magicVeinImgs = masterImageLoad.magicVeinImgs;
         oreImgs = masterImageLoad.oreImgs;
         quakeImgs = masterImageLoad.quakeImgs;
         blobImgs = masterImageLoad.blobImgs;
+        magicBlobImgs = masterImageLoad.magicBlobImgs;
         smithImgs = masterImageLoad.smithImgs;
         minerImgs = masterImageLoad.minerImgs;
     }
@@ -60,6 +66,8 @@ public class ProcessWorld extends PApplet{
         setupWorld();
         loadImages();
         searchOverlay = new OccGrid<Integer>(WORLD_WIDTH, WORLD_HEIGHT, 0);
+        curMousePt = new Point(0,0);
+        magicCount = 0;
         size(SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX);
         background(color(255,255,255));
         SaveLoad.load(world);
@@ -137,10 +145,10 @@ public class ProcessWorld extends PApplet{
         }
     }
     
-    public void updateMouse(){
+    private void updateMouse(){
         searchOverlay = new OccGrid<Integer>(WORLD_WIDTH, WORLD_HEIGHT, 0);
-        Point pt = new Point((mouseX/TILE_WIDTH_PX) + SCREEN_START.getX(), (mouseY/TILE_HEIGHT_PX) + SCREEN_START.getY());
-        Entity e = world.getTileOccupant(pt);
+        curMousePt = new Point((mouseX/TILE_WIDTH_PX) + SCREEN_START.getX(), (mouseY/TILE_HEIGHT_PX) + SCREEN_START.getY());
+        Entity e = world.getTileOccupant(curMousePt);
         if(e instanceof Miner){
             Miner miner = (Miner) e;
             this.searchOverlay = miner.getOverlay();
@@ -150,9 +158,24 @@ public class ProcessWorld extends PApplet{
         }
     }
     
+    public void mouseClicked(){
+        if(magicCount < 2){
+            boolean enoughSpace = true;
+            for(int y = -2; y <= 2; y++){
+                for(int x = -2; x <= 2; x++){
+                    if(!world.openTile(new Point(curMousePt.getX() + x, curMousePt.getY() + y))){enoughSpace = false;}
+                }
+            }
+            if(enoughSpace){
+                magicCount += 1;
+                world.addEntity(new MagicQuake(curMousePt, "vein"));
+            }else if(world.openTile(curMousePt)){world.addEntity(new Quake("quake", ProcessWorld.quakeImgs, curMousePt, 100));}
+        }
+    }
+    
     private PImage processAlpha(Entity entity, Background bgnd){
         PImage e = entity.getCurrentImage();
-        EasyList<Integer> maskColors = new EasyList<Integer>(-197380);
+        EasyList<Integer> maskColors = new EasyList<Integer>(-197380, -655105);
         e.format = RGB;
         e.loadPixels();
         PImage bg = bgnd.getCurrentImage();
