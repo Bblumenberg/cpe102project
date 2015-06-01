@@ -55,7 +55,6 @@ public class AStarPather{
         this.targetPt = targetPt;
         goal = null;
         start = new Node(null, startPt, 0, startPt.manhatten(targetPt));
-        if(startPt.getX() == -1 && startPt.getY() == -1){System.out.print("recieved invalid start from a " + e.getClass());}
         openSet = new NodeList(0);
         closedSet = new NodeList(0);
         openSet.addNode(start);

@@ -32,7 +32,6 @@ public class ImageLoad extends PApplet{
         
         backgroundImgs = new ArrayList<PImage>(7);
         overlayImgs = new ArrayList<PImage>(3);
-        System.out.println(overlayImgs.size());
         obstacleImgs = new ArrayList<PImage>(0);
         veinImgs = new ArrayList<PImage>(0);
         magicVeinImgs = new ArrayList<PImage>(0);

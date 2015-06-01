@@ -18,7 +18,6 @@ public class Wyvern extends ActionedEntity{
     public OccGrid<Integer> getOverlay(){return searchOverlay;}
     
     public Point wyvernNextPosition(WorldModel world, Point destPt){
-        if(this.getPosition().getX() == -1){System.out.format("(%s, %s)", this.getPosition().getX(), this.getPosition().getY());}
         searchOverlay = new OccGrid<Integer>(ProcessWorld.WORLD_WIDTH, ProcessWorld.WORLD_HEIGHT, 0);
         pather = new AStarPather(this.getPosition(), destPt, this);
         return pather.search(world, searchOverlay, true, false);
