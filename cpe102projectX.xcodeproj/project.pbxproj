@@ -12,6 +12,7 @@
 		B5059C231AF811350043B1B3 /* MinerFull.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; lineEnding = 0; path = MinerFull.java; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		B5059C241AF8733E0043B1B3 /* EntInt.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = EntInt.java; sourceTree = "<group>"; };
 		B505CD7D1AEEB3BE0017FE17 /* TwoTuple.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = TwoTuple.java; sourceTree = "<group>"; };
+		B5105B481B1AEBD8009C9E72 /* Wyvern.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Wyvern.java; sourceTree = "<group>"; };
 		B510A2071B13EAC300A61185 /* AStarPather.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = AStarPather.java; sourceTree = "<group>"; };
 		B510A2081B13FECB00A61185 /* DFSPather.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = DFSPather.java; sourceTree = "<group>"; };
 		B557AEDF1AF840D30049BC4D /* EasyList.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = EasyList.java; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 				B5C34A901B19B89D001E70D8 /* MagicQuake.java */,
 				B570770F1AF44FF900E63066 /* OreBlob.java */,
 				B5C34A911B19C9C9001E70D8 /* MagicBlob.java */,
+				B5105B481B1AEBD8009C9E72 /* Wyvern.java */,
 				B57077121AF4596C00E63066 /* ResourceEntity.java */,
 				B57077131AF45B2A00E63066 /* Blacksmith.java */,
 				B5059C211AF808A90043B1B3 /* Miner.java */,

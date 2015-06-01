@@ -7,13 +7,14 @@ public class MinerNotFull extends Miner{
         super(name, imgs, resourceLimit, position, rate, animationRate, 0);
     }
     
-    public boolean minerToOre(WorldModel world, PositionedEntity ore){
+    public boolean minerToOre(WorldModel world, Ore ore){
         if(ore == null){
             return false;
         }
         Point orePt = ore.getPosition();
         if(position.adjacent(orePt)){
             this.resourceCount += 1;
+            if(ore.isMagic() && this.resourceLimit < 10){this.resourceLimit += 1;}
             world.removeEntity(ore);
             return true;
         }

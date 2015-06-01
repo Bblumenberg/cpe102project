@@ -40,9 +40,6 @@ public class MagicBlob extends OreBlob{
             ScheduledAction myAction = new ScheduledAction(this, world, rate, new Action<MagicBlob>(){
                 public void method(MagicBlob e, WorldModel world){
                     Vein vein = (Vein) e.magicBlobFindNearest(e.getPosition(), world);
-                    Point veinPt;
-                    if(vein != null){veinPt = vein.getPosition();}
-                    else{veinPt = new Point(-1, -1);}
                     boolean found = e.blobToVein(world, vein);
                     if(found){
                         MagicQuake quake = new MagicQuake(getPosition(), "regVein");

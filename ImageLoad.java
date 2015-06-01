@@ -17,6 +17,7 @@ public class ImageLoad extends PApplet{
     public List<PImage> quakeImgs;
     public List<PImage> blobImgs;
     public List<PImage> magicBlobImgs;
+    public List<PImage> wyvernImgs;
     public List<PImage> smithImgs;
     public List<PImage> minerImgs;
     
@@ -29,8 +30,9 @@ public class ImageLoad extends PApplet{
             System.out.println(e.getMessage());
         }
         
-        backgroundImgs = new ArrayList<PImage>(6);
+        backgroundImgs = new ArrayList<PImage>(7);
         overlayImgs = new ArrayList<PImage>(3);
+        System.out.println(overlayImgs.size());
         obstacleImgs = new ArrayList<PImage>(0);
         veinImgs = new ArrayList<PImage>(0);
         magicVeinImgs = new ArrayList<PImage>(0);
@@ -38,6 +40,7 @@ public class ImageLoad extends PApplet{
         quakeImgs = new ArrayList<PImage>(0);
         blobImgs = new ArrayList<PImage>(0);
         magicBlobImgs = new ArrayList<PImage>(0);
+        wyvernImgs = new ArrayList<PImage>(0);
         smithImgs = new ArrayList<PImage>(0);
         minerImgs = new ArrayList<PImage>(0);
         
@@ -51,6 +54,9 @@ public class ImageLoad extends PApplet{
                     backgroundImgs.add(1, loadImage(info[1]));
                 }
                 else if(info[0].equals("magicBackground")){
+                    backgroundImgs.add(loadImage(info[1]));
+                }
+                else if(info[0].equals("obstacleBackground")){
                     backgroundImgs.add(loadImage(info[1]));
                 }
                 else if(info[0].equals("black")){
@@ -82,6 +88,9 @@ public class ImageLoad extends PApplet{
                 }
                 else if(info[0].equals("magicBlob")){
                     magicBlobImgs.add(loadImage(info[1]));
+                }
+                else if(info[0].equals("wyvern")){
+                    wyvernImgs.add(loadImage(info[1]));
                 }
                 else if(info[0].equals("blacksmith")){
                     smithImgs.add(loadImage(info[1]));

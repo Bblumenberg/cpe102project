@@ -14,6 +14,14 @@ public class Blacksmith extends ResourceEntity{
         this.resourceDistance = 1;
     }
     
+    public void setResourceCount(int n){
+        resourceCount = n;
+        if(n > 100){
+            resourceCount = 0;
+            ProcessWorld.increaseMagicLimit();
+        }
+    }
+    
     public int getAnimationRate(){return 0;}
     
     public void createNextAction(WorldModel world){;}

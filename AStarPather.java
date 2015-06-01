@@ -50,18 +50,19 @@ public class AStarPather{
     private NodeList closedSet;
     private Comparator<Node> comp;
     
-    public AStarPather(Point startPt, Point targetPt){
+    public AStarPather(Point startPt, Point targetPt, PositionedEntity e){
         count = 0;
         this.targetPt = targetPt;
         goal = null;
         start = new Node(null, startPt, 0, startPt.manhatten(targetPt));
+        if(startPt.getX() == -1 && startPt.getY() == -1){System.out.print("recieved invalid start from a " + e.getClass());}
         openSet = new NodeList(0);
         closedSet = new NodeList(0);
         openSet.addNode(start);
         comp = (Node one, Node two) -> {return (one.g + one.h) - (two.g + two.h);};
     }
     
-    public Point search(WorldModel world, OccGrid<Integer> grid, boolean canComsumeOre){
+    public Point search(WorldModel world, OccGrid<Integer> grid, boolean canComsumeOre, boolean canPassObstacles){
         while(openSet.size() > 0 && count < 1200){
             grid.setCell(targetPt, 3);
             count += 1;
@@ -75,7 +76,7 @@ public class AStarPather{
                 closedSet.addNode(current);
                 grid.setCell(current.pt, 1);
                 //for every point next to the current one:
-                for(Point neighborPt : current.pt.openAdjacencyList(world, canComsumeOre)){
+                for(Point neighborPt : current.pt.openAdjacencyList(world, canComsumeOre, canPassObstacles)){
                     Node neighbor = new Node(current, neighborPt, current.g + 1, neighborPt.manhatten(targetPt));
                     //have we searched it yet?
                     if(closedSet.containsPoint(neighbor.pt)){continue;}

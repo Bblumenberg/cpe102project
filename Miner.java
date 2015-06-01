@@ -33,8 +33,8 @@ public abstract class Miner extends ResourceEntity{
     
     public Point nextPosition(WorldModel world, Point destPt){
         searchOverlay = new OccGrid<Integer>(ProcessWorld.WORLD_WIDTH, ProcessWorld.WORLD_HEIGHT, 0);
-        pather = new AStarPather(this.getPosition(), destPt);
-        return pather.search(world, searchOverlay, false);
+        pather = new AStarPather(this.getPosition(), destPt, this);
+        return pather.search(world, searchOverlay, false, false);
     }
     
 /*    public Point nextPosition(WorldModel world, Point destPt){

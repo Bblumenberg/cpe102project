@@ -12,29 +12,30 @@ public class MagicQuake extends Quake{
                 public void method(Quake e, WorldModel world){
                     Point oldPosition = getPosition();
                     world.removeEntity(e);
-                    newEntity(oldPosition);
+                    newEntity(oldPosition, world);
                 }
             });
             Actions.addAction(myAction);
         }
     }
     
-    private void newEntity(Point pt){
+    private void newEntity(Point pt, WorldModel world){
         if(toBe.equals("vein")){
             MagicVein vein = new MagicVein("magicVein_" + pt.getX() + "_" + pt.getY(), ProcessWorld.magicVeinImgs, 5000, pt, 2);
-            ProcessWorld.getWorld().addEntity(vein);
-            vein.createNextAction(ProcessWorld.getWorld());
+            world.addEntity(vein);
+            world.getBackground(pt).currentImg = RandomGen.gen(2,5);
+            vein.createNextAction(world);
         }
         else if(toBe.equals("obs")){
-            ProcessWorld.getWorld().addEntity(new Obstacle("obstacle" + pt.getX() + "_" + pt.getY(), ProcessWorld.obstacleImgs, pt));
+            world.addEntity(new Obstacle("obstacle" + pt.getX() + "_" + pt.getY(), ProcessWorld.obstacleImgs, pt));
         }
         else if(toBe.equals("bg")){
-            ProcessWorld.getWorld().getBackground(pt).currentImg = RandomGen.gen(2,5);
+            world.getBackground(pt).currentImg = RandomGen.gen(2,5);
         }
         else if(toBe.equals("regVein")){
             Vein vein = new Vein("vein_" + pt.getX() + "_" + pt.getY(), ProcessWorld.veinImgs, RandomGen.gen(9000,11000), pt);
-            ProcessWorld.getWorld().addEntity(vein);
-            vein.createNextAction(ProcessWorld.getWorld());
+            world.addEntity(vein);
+            vein.createNextAction(world);
         }
     }
 }

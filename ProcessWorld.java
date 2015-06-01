@@ -24,7 +24,14 @@ public class ProcessWorld extends PApplet{
     
     private OccGrid<Integer> searchOverlay;
     private Point curMousePt;
-    private int magicCount;
+    private static int magicCount;
+    private static int magicLimit;
+    public static void increaseMagicLimit(){
+        if(magicLimit < 10){
+            magicLimit += 1;
+            System.out.println("magic limit increased");
+        }
+    }
     
     private long next_time;
     
@@ -37,6 +44,7 @@ public class ProcessWorld extends PApplet{
     public static List<PImage> quakeImgs;
     public static List<PImage> blobImgs;
     public static List<PImage> magicBlobImgs;
+    public static List<PImage> wyvernImgs;
     public static List<PImage> smithImgs;
     public static List<PImage> minerImgs;
     
@@ -51,6 +59,7 @@ public class ProcessWorld extends PApplet{
         quakeImgs = masterImageLoad.quakeImgs;
         blobImgs = masterImageLoad.blobImgs;
         magicBlobImgs = masterImageLoad.magicBlobImgs;
+        wyvernImgs = masterImageLoad.wyvernImgs;
         smithImgs = masterImageLoad.smithImgs;
         minerImgs = masterImageLoad.minerImgs;
     }
@@ -68,6 +77,7 @@ public class ProcessWorld extends PApplet{
         searchOverlay = new OccGrid<Integer>(WORLD_WIDTH, WORLD_HEIGHT, 0);
         curMousePt = new Point(0,0);
         magicCount = 0;
+        magicLimit = 2;
         size(SCREEN_WIDTH_PX, SCREEN_HEIGHT_PX);
         background(color(255,255,255));
         SaveLoad.load(world);
@@ -155,11 +165,14 @@ public class ProcessWorld extends PApplet{
         }else if(e instanceof OreBlob){
             OreBlob blob = (OreBlob) e;
             this.searchOverlay = blob.getOverlay();
+        }else if(e instanceof Wyvern){
+            Wyvern wyvern = (Wyvern) e;
+            this.searchOverlay = wyvern.getOverlay();
         }
     }
     
     public void mouseClicked(){
-        if(magicCount < 2){
+        if(magicCount < magicLimit){
             boolean enoughSpace = true;
             for(int y = -2; y <= 2; y++){
                 for(int x = -2; x <= 2; x++){

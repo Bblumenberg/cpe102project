@@ -7,18 +7,24 @@ public class MagicVein extends Vein{
     
     public MagicVein(String name, List<PImage> imgs, int rate, Point position, int resourceDistance){
         super(name, imgs, rate, position, resourceDistance);
-        List<MagicQuake> quakeList = new ArrayList<MagicQuake>(0);
+        List<PositionedEntity> quakeList = new ArrayList<PositionedEntity>(0);
         int mainX = getPosition().getX();
         int mainY = getPosition().getY();
         for(int y = mainY - 2; y <= mainY + 2; y++){
             for(int x = mainX - 2; x <= mainX + 2; x++){
                 if(x == mainX && y == mainY){continue;}
                 else if(x == mainX || y == mainY){quakeList.add(new MagicQuake(new Point(x,y), "bg"));}
-                else if(Math.abs(mainX - x) == 1 && Math.abs(mainY - y) == 1){quakeList.add(new MagicQuake(new Point(x,y), "bg"));}
+                else if(Math.abs(mainX - x) == 1 && Math.abs(mainY - y) == 1){
+                    quakeList.add(new Wyvern("wyvern_" + x + "_" + y, ProcessWorld.wyvernImgs, new Point(x,y), 1000, 70));
+                    ProcessWorld.getWorld().getBackground(new Point(x,y)).currentImg = RandomGen.gen(2,5);
+                }
                 else{quakeList.add(new MagicQuake(new Point(x,y), "obs"));}
             }
         }
-        for(MagicQuake q : quakeList){ProcessWorld.getWorld().addEntity(q);}
+        for(PositionedEntity e : quakeList){
+            ProcessWorld.getWorld().addEntity(e);
+            if(e instanceof Wyvern){Wyvern w = (Wyvern) e; w.createNextAction(ProcessWorld.getWorld());}
+        }
     }
     
     public MagicVein(String name, List<PImage> imgs, int rate, Point position){

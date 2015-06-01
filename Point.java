@@ -26,12 +26,13 @@ public class Point{
         return ((this.getX() == that.getX() && Math.abs(this.getY() - that.getY()) == 1) || (this.getY() == that.getY() && Math.abs(this.getX() - that.getX()) == 1));
     }
     
-    public List<Point> openAdjacencyList(WorldModel world, boolean canComsumeOre){
+    public List<Point> openAdjacencyList(WorldModel world, boolean canComsumeOre, boolean canPassObstacles){
         List<Point> possible = new EasyList<Point>(new Point(x+1,y), new Point(x, y+1), new Point(x-1, y), new Point(x, y-1));
         List<Point> list = new ArrayList(0);
         for(Point pt : possible){
             if(world.openTile(pt)){list.add(pt);}
             if(canComsumeOre && Ore.class.isInstance(world.getTileOccupant(pt))){list.add(pt);}
+            if(canPassObstacles && Obstacle.class.isInstance(world.getTileOccupant(pt))){list.add(pt);}
         }
         return list;
     }
