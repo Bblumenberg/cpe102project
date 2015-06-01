@@ -29,7 +29,7 @@ public class ProcessWorld extends PApplet{
     public static void increaseMagicLimit(){
         if(magicLimit < 10){
             magicLimit += 1;
-            System.out.println("magic limit increased");
+            System.out.println("You may now place an additional magic vein!");
         }
     }
     

@@ -1,0 +1,29 @@
+Most of the new additions are refered to as 'magic' for lack of a better name. Here's the jist of it:
+
+Click to create a magic vein.
+If there's not enough space (it needs a 5x5 sqaure), you will get a quake at the mouse position instead.
+Otherwise you will still get a quake but it will spawn into a magic vein, which looks like a vein but blue.
+It should create several more quakes around it, which change the background to give it a cracked appearence, add some obstacles surrounding the new vein, and 4 wyverns (more on these later).
+That is the vizualization aspect of the assigment.
+Note that initially you can only spawn 2 such magic viens, after which clicking does nothing.
+
+Magic veins spawn magic ore with a reach of 2.
+Magic ore looks exactly like regular ore.
+Ore and magic ore are both insances of the Ore class, and are differentiated by a boolean value.
+However, when a magic ore devolves into a blob, it creates a magic blob, which is its own subclass (of OreBlob).
+Magic blobs are represented by negatively colored (white) blobs.
+Futhermore, if a regular blob 'consumes' a piece of magic ore on its way to a vein, it will transform into a magic blob.
+If a miner picks up a piece of magic ore, his resource count will increase by 1, up to a maximum of ten.
+Magic Blobs still seek out veins (non-magic only), but when they find one instead of destroying it they morph themselves into a new regular vein next to the one they found.
+Magic blobs are meant to satisfy the effect portion of the assigment.
+Note that regular blobs will seek out both magic and non-magic veins and can destroy both.
+
+When a magic vein is created, 4 wyverns are created along with it.
+Wyverns will seek out regular blobs (only).
+They will remain motionless until a blob spawns; this is normal and expected.
+When they find a regular blob they will cause it to transform into a magic blob.
+Wyverns are the new entity for the assigment.
+
+The idea is that as more veins are created by magic blobs, more pieces of regular ore are spawned and then more regular blobs are created. Unlike the old version of the world which timed out fairly quickly once the blobs destroyed all the veins, this one can go on and on for a very long time even after the magic veins themselves are destroyed.
+
+As an added easter egg, if a blacksmith recieves 100 pieces of ore (it takes a while), you will be able to spawn an additional magic vein, up to a maximum of 10. When this occurs a message will be printed to the console/terminal.
