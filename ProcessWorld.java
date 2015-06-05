@@ -3,20 +3,24 @@ import java.util.ArrayList;
 import processing.core.*;
 
 public class ProcessWorld extends PApplet{
+    
+    private static boolean big;
 
     private static final int ANIMATION_TIME = 100;
 
-    private static final int WORLD_WIDTH_SCALE = 2;
-    private static final int WORLD_HEIGHT_SCALE = 2;
+    private static int WORLD_WIDTH_SCALE = 2;
+    private static int WORLD_HEIGHT_SCALE = 2;
+        
+    private static int SCREEN_WIDTH_PX = 640;
+    private static int SCREEN_HEIGHT_PX = 480;
+
     
-    private static final int SCREEN_WIDTH_PX = 640;
-    private static final int SCREEN_HEIGHT_PX = 480;
     private static final int TILE_WIDTH_PX = 32;
     private static final int TILE_HEIGHT_PX = 32;
-    private static final int SCREEN_HEIGHT = SCREEN_HEIGHT_PX/TILE_HEIGHT_PX;
-    private static final int SCREEN_WIDTH = SCREEN_WIDTH_PX/TILE_WIDTH_PX;
-    public static final int WORLD_HEIGHT = SCREEN_HEIGHT * WORLD_HEIGHT_SCALE;
-    public static final int WORLD_WIDTH = SCREEN_WIDTH * WORLD_WIDTH_SCALE;
+    private static int SCREEN_HEIGHT = SCREEN_HEIGHT_PX/TILE_HEIGHT_PX;
+    private static int SCREEN_WIDTH = SCREEN_WIDTH_PX/TILE_WIDTH_PX;
+    public static int WORLD_HEIGHT = SCREEN_HEIGHT * WORLD_HEIGHT_SCALE;
+    public static int WORLD_WIDTH = SCREEN_WIDTH * WORLD_WIDTH_SCALE;
     
     private static WorldModel world;
     private Entity[][] worldView;
@@ -72,6 +76,16 @@ public class ProcessWorld extends PApplet{
     public static WorldModel getWorld(){return world;}
 
     public void setup(){
+        if(big){
+            WORLD_WIDTH_SCALE = 1;
+            WORLD_HEIGHT_SCALE = 1;
+            SCREEN_WIDTH_PX = 1280;
+            SCREEN_HEIGHT_PX = 960;
+            SCREEN_HEIGHT = SCREEN_HEIGHT_PX/TILE_HEIGHT_PX;
+            SCREEN_WIDTH = SCREEN_WIDTH_PX/TILE_WIDTH_PX;
+            WORLD_HEIGHT = SCREEN_HEIGHT * WORLD_HEIGHT_SCALE;
+            WORLD_WIDTH = SCREEN_WIDTH * WORLD_WIDTH_SCALE;
+        }
         setupWorld();
         loadImages();
         searchOverlay = new OccGrid<Integer>(WORLD_WIDTH, WORLD_HEIGHT, 0);
@@ -206,6 +220,8 @@ public class ProcessWorld extends PApplet{
     
     public static void main(String[] args)
     {
+        big = false;
+        for(String s : args){if(s.equals("big")){big = true;}}
         PApplet.main("ProcessWorld");
     }
 }

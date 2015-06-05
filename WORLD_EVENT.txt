@@ -27,3 +27,6 @@ Wyverns are the new entity for the assigment.
 The idea is that as more veins are created by magic blobs, more pieces of regular ore are spawned and then more regular blobs are created. Unlike the old version of the world which timed out fairly quickly once the blobs destroyed all the veins, this one can go on and on for a very long time even after the magic veins themselves are destroyed.
 
 As an added easter egg, if a blacksmith recieves 100 pieces of ore (it takes a while), you will be able to spawn an additional magic vein, up to a maximum of 10. When this occurs a message will be printed to the console/terminal.
+
+Also, the app will run with the entire world displayed if the command line argument 'big' is used. Since there's no where to go, the viewport no longer moves if this option is used. Type
+    java ProcessWorld big
